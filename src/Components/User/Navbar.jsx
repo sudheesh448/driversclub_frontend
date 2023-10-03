@@ -5,9 +5,45 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faBars,faHouse ,faRightFromBracket, faUser,faCircleCheck,faClock,faFolderOpen,faStar,faCar,} from '@fortawesome/free-solid-svg-icons';
 library.add(faXmark, faBars,faHouse,faRightFromBracket,faUser,faCircleCheck,faClock,faFolderOpen,faStar,faCar);
 
+import { useDispatch, useSelector } from 'react-redux';
+import {logout} from './../Redux/authActions'
+import { useNavigate } from 'react-router-dom';
+
 function Navbar() {
   
-        const [isNavOpen, setIsNavOpen] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const userData = useSelector((state) => state.auth.userData);
+  const name = userData ? userData.first_name : '';
+  const greeting = name ? `Hi ${name}` : 'Hi Guest';
+
+  console.log("name:",name)
+
+
+  const  handleLogout = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await dispatch(logout());
+    // Check if the logout was successful
+    if (response.success) {
+      console.log('Logout successful front end:', response.message);
+      navigate('/user/signin');
+    } else {
+      // Handle logout failure here, if needed
+      console.error('Logout failed:', response.message);
+      // You can show an error message to the user if needed
+    }
+    } catch (error) {
+      // Handle authentication errors here
+      console.error('Authentication failed:', error);
+      // You can show an error message to the user if needed
+    }
+  };
+
+
+  
   return (
     <>
       <nav className=" fixed top-0 w-full  bg-[#d7dae2] py-1 px-4 h-13 mx-auto my-auto z-50 ">
@@ -75,12 +111,18 @@ function Navbar() {
         {/* Mobile view ends */}
         <ul className="DESKTOP-MENU hidden space-x-8 lg:flex">
           <li>
-            <a href="/about"><FontAwesomeIcon icon="fa-solid fa-house" size="xl" /></a>
+            <h1>
+              <p>{greeting}</p>
+            </h1>
           </li>
           <li>
+            <a href="/about"><FontAwesomeIcon icon="fa-solid fa-house" size="xl" /></a>
+          </li>
+          {isAuthenticated && (
+          <li className='cursor-pointer' onClick={handleLogout}>
           <FontAwesomeIcon icon="fa-solid fa-right-from-bracket" size="xl" />
           </li>
-          
+          )}
         </ul>
       </nav>
   
