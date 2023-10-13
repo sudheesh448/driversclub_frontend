@@ -1,13 +1,13 @@
 import React , { useState } from 'react'
-import Navbar from '../Navbar';
-import logo from './../../../assets/Static/drivers-club-logo-color-on-transparent-background.png';
-import logo1 from './../../../assets/Static/drivers-club-logo-color-on-transparent-background1.png';
-import Footer from '../Footer';
+import Navbar from './../NavBar/Navbar';
+import logo from './../../assets/Static/drivers-club-logo-color-on-transparent-background.png';
+import logo1 from './../../assets/Static/drivers-club-logo-color-on-transparent-background1.png';
+
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const UserSignupform = () => {
+const DriverSignupform = () => {
   const [formData, setFormData] = useState({
     first_name: '',
     username: '',
@@ -15,6 +15,7 @@ const UserSignupform = () => {
     phone: '',
     password: '',
     confirmPassword: '',
+    license_id:'',
   });
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -57,7 +58,7 @@ const UserSignupform = () => {
     console.log('Form submitted with data:', formData);
   
     // Define the API endpoint URL
-    const apiUrl = 'http://127.0.0.1:8000/api/register';
+    const apiUrl = 'http://127.0.0.1:8000/api/driver_register/';
   
     // Make an Axios POST request to the API
     axios.post(apiUrl, formData, {headers:{'Content-Type' : 'application/json'}, withCredentials : true })
@@ -70,7 +71,7 @@ const UserSignupform = () => {
         showSuccessAlert(email);
         
         // Navigate to the OTP verification page
-        navigate('/user/otpverification');
+        navigate('/driver/otpverification');
       })
       .catch((error) => {
         // Handle any errors here
@@ -132,7 +133,7 @@ const UserSignupform = () => {
     <> 
     <Navbar/>
     <div className="w-full max-w-sm mx-auto mt-20  p-6 border rounded-lg shadow-xl">
-      <h2 className="text-2xl font-semibold mb-4">Sign Up</h2>
+      <h2 className="text-2xl font-semibold mb-4">Driver Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           
@@ -141,7 +142,7 @@ const UserSignupform = () => {
             id="first_name"
             placeholder='First Name'
             name="first_name"
-            value={formData.firstName}
+            value={formData.first_name}
             onChange={handleChange}
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
             required
@@ -154,7 +155,7 @@ const UserSignupform = () => {
             placeholder='username'
             id="username"
             name="username"
-            value={formData.lastName}
+            value={formData.last_name}
             onChange={handleChange}
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
             required
@@ -188,6 +189,21 @@ const UserSignupform = () => {
             required
           />
         </div>
+
+        <div className="mb-4">
+          <input
+            type="text"
+            placeholder='Liscence number'
+            id="license_id"
+            name="license_id"
+            value={formData.license_id}
+            onChange={handleChange}
+            maxLength="20"
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
+            required
+          />
+        </div>
+
         <div className="mb-4">
           
           <input
@@ -239,4 +255,4 @@ const UserSignupform = () => {
   );
 };
 
-export default UserSignupform
+export default DriverSignupform

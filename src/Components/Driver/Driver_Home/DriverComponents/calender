@@ -1,0 +1,53 @@
+// import React, { useState } from 'react';
+// import Calendar from 'react-calendar';
+// import 'react-calendar/dist/Calendar.css';
+
+// function CalendarSchedule() {
+//   const [selectedDate, setSelectedDate] = useState(new Date());
+//   const [schedules, setSchedules] = useState({});
+
+//   const handleDateChange = (date) => {
+//     setSelectedDate(date);
+//   };
+
+//   const handleScheduleChange = (event) => {
+//     const dateKey = selectedDate.toISOString().split('T')[0];
+//     const updatedSchedules = { ...schedules };
+//     updatedSchedules[dateKey] = event.target.value;
+//     setSchedules(updatedSchedules);
+//   };
+
+//   // Function to customize the content of each date tile
+//   const tileContent = ({ date }) => {
+//     const currentMonth = selectedDate.getMonth();
+//     const currentYear = selectedDate.getFullYear();
+//     const isCurrentMonth = date.getMonth() === currentMonth && date.getFullYear() === currentYear;
+
+//     return (
+//       <div className={`text-center ${isCurrentMonth ? '' : 'text-gray-400'}`}>
+//         {date.getDate()}
+//       </div>
+//     );
+//   };
+
+  
+
+//   return (
+//     <div className="calendar-container mt-16 p-2 bg-black text-white rounded-lg">
+//       <div className="calendar pl-4 pt-4 pb-4 shadow-md text-black">
+//         <Calendar
+//           onChange={handleDateChange}
+//           value={selectedDate}
+//           tileClassName="bg-black text-white"
+//           formatMonthYear={(locale, date) =>
+//             `${date.toLocaleDateString(locale, { month: 'long' })} ${date.getFullYear()}`
+//           }
+//           tileContent={tileContent} // Apply the tileContent function
+//         />
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default CalendarSchedule;
+

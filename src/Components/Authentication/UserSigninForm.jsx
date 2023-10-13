@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from '../Navbar';
-import logo from './../../../assets/Static/drivers-club-logo-color-on-transparent-background.png';
-import Footer from '../Footer';
+import Navbar from './../NavBar/Navbar';
+import logo from './../../assets/Static/drivers-club-logo-color-on-transparent-background.png';
+
 import { useNavigate } from 'react-router-dom';
-import axios from "axios";
 import { useDispatch } from 'react-redux';
-import {login} from './../../Redux/authActions'
 import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
+import AxiosInstance from './../../Components/CustomAxios/axiosInstance'
+import { login } from '../Redux/authSlice';
+import { selectUserData } from '../Redux/authSlice';
 
 
 
@@ -19,28 +21,15 @@ const UserSigninForm = () => {
     password: '',
   });
   
-  // const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const isAuthenticated = localStorage.getItem("isAuthenticated");
-  console.log("sign in page ",isAuthenticated)
-  const userData = useSelector((state) => state.auth.userData);
   
+  const userData = useSelector(selectUserData);
+  const { accessToken,isAuthenticated,is_driver } = userData;
+  const axiosInstance = AxiosInstance(accessToken);   
   console.log("Sign in page")
   console.log(userData)
-  const isDriver = localStorage.getItem("is_driver");
+ 
 
-  useEffect(() => {
-    // Check the authentication status when the component mounts
-    if (isAuthenticated=='true') {
-      
-      if (isDriver=='false'){
-        // Navigate to the home page if authenticated and not a driver
-        navigate('/');
-      }
-      else if (isDriver=='true'){
-        navigate('/driver/home');
-      }
-    }
-  }, [isAuthenticated, navigate]);
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -50,20 +39,60 @@ const UserSigninForm = () => {
     });
   };
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await dispatch(login(formData)).then((response) => {
-        // Handle success and redirection here, if needed
+      const response = await axiosInstance.post('/token/', formData);
+
+      if (response.status === 200) {
+        // Authentication successful
+        console.log('Authentication successful:', response.data);
+
         
-        const isDriver = localStorage.getItem('driver');
-        console.log('Authentication successful:',response.status);
-        
-      });
+
+        if (response.data.driver==false) {
+
+        dispatch(
+          login({
+            userId: response.data.id,
+            name: response.data.first_name,
+            email: response.data.email,
+            username: response.data.username,
+            is_super: response.data.admin,
+            is_driver: response.data.driver,
+            is_active: response.data.active,
+            first_name: response.data.first_name,
+            accessToken: response.data.access_token, 
+            refreshToken: response.data.refresh,
+          })
+        );  
+        navigate('/')}
+          else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Authentication Failed',
+              text: 'Drivers are not allowed to log in here.', // Customize the error message
+            });
+          }
+    
+      } else {
+        // Handle other response status codes if needed
+        console.error('Authentication failed:', response.status);
+        Swal.fire({
+          icon: 'error',
+          title: 'Authentication Failed',
+          text: 'Invalid username or password', // Customize the error message
+        });
+      }
     } catch (error) {
       // Handle authentication errors here
-      console.error('Authentication failed login page:', error);
-      // You can show an error message to the user if needed
+      console.error('Authentication failed:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Authentication Failed',
+        text: 'Invalid username or password', // Customize the error message
+      });
     }
   };
       

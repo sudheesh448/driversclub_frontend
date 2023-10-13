@@ -1,7 +1,9 @@
 import React, { useState, useRef } from 'react';
-import Navbar from '../Navbar';
-import logo from './../../../assets/Static/drivers-club-logo-color-on-transparent-background.png';
-import Footer from '../Footer';
+import Navbar from './../NavBar/Navbar';
+import logo from './../../assets/Static/drivers-club-logo-color-on-transparent-background.png';
+
+
+
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';

@@ -2,17 +2,26 @@ import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import User_home from './Components/User/User_home'
+import UserHome from './Components/User/HOME/User_home'
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
-import UserSignupform from './Components/User/Authentication/UserSignupform.jsx'
-import UserSigninForm from './Components/User/Authentication/UserSigninForm'
-import OTPVerification from './Components/User/Authentication/OTPVerification'
+import UserSignupform from './Components/Authentication/UserSignupform.jsx'
+import UserSigninForm from './Components/Authentication/UserSigninForm'
+import OTPVerification from './Components/Authentication/OTPVerification'
 import { useDispatch } from 'react-redux'
-import {checkAccessTokenValidity} from './Components/Redux/authActions'
-import DriverSignupform from './Components/User/Authentication/DriverSignupform'
-import DriverOTPVerification from './Components/User/Authentication/DriverOTPVerification copy'
-import Driver_home from './Components/Driver/Driver_home'
-import PrivateRoutes from './Components/CustomAxios/PrivateRoutes'
+import DriverSignupform from './Components/Authentication/DriverSignupform'
+import DriverOTPVerification from './Components/Authentication/DriverOTPVerification copy'
+import Driver_home from './Components/Driver/Driver_Home/Driver_home'
+import PrivateRoutes from './Components/PrivateRoutes/PrivateRoutes'
+import DriverSigninForm from './Components/Authentication/DriverSigninForm'
+import DriverPrivateRoutes from './Components/PrivateRoutes/DriverPrivateRoutes'
+import DriverSigninPrivateRoute from './Components/PrivateRoutes/DriverSigninPrivateRoute'
+import TripRequestDetail from './Components/Common/TripRequestDetail'
+import Profile from './Components/User/Profile/Profile'
+import Car from './Components/User/Car/Car'
+import CommonPrivateRoutes from './Components/PrivateRoutes/CommonPrivateRoutes'
+import Driver_Profile from './Components/Driver/Driver_Profile/Driver_Profile'
+import RequestPool from './Components/Driver/Driver_Home/RequestPool/RequestPool'
+
 
 
 
@@ -27,33 +36,46 @@ function App() {
     isAuthenticated = "false";
     localStorage.setItem("isAuthenticated", "false");
   }
-  useEffect(() => {
-    // Dispatch the action to check access token validity when the component mounts
-    console.log("app use effect access token ckeck")
-    dispatch(checkAccessTokenValidity());
-  }, []);
+
 
   return (
     <>
     
     <Router>
       <Routes>
-        {/* <Route exact path="/" element={<User_home/>}/> */}
-        <Route exact path="/user/register" element={<UserSignupform/>}/>
-        <Route exact path="/user/signin" element={<UserSigninForm/>}/>
+        <Route exact path="/trip_request_detail/:trip_request_id" element={<TripRequestDetail/>}/>
+        
         <Route exact path="/user/otpverification" element={<OTPVerification/>}/>
-        <Route exact path="/driver/register" element={<DriverSignupform/>}/>
+        
         <Route exact path="/driver/otpverification" element={<DriverOTPVerification/>}/>
-        {/* <Route exact path="/driver/home" element={<Driver_home/>}/> */}
-        <Route path="/" exact element={<PrivateRoutes  >
-          <User_home/>
-        </PrivateRoutes>
-      }>
-          {/* <Route element={<User_home/>} path="/" exact/> */}
-          <Route element={<Driver_home/>} path="/driver/home" exact/>
+        
 
+        {/* <Route path='/' element={<CommonPrivateRoutes/>}>
+        
+        </Route> */}
+
+        <Route path='/' element={<PrivateRoutes/>}>
+          <Route exact path="/user/profile" element={<Profile/>}/>
+          <Route exact path="/user/car" element={<Car/>}/>
+           <Route exact path="/"  element={<UserHome/>}/>
+           
         </Route>
 
+        <Route path='/' element={<DriverPrivateRoutes/>}>
+          <Route element={<Driver_home/>} exact path="/driver/home" />
+          <Route element={<RequestPool/>} exact path="/driver/requestpool" />
+          <Route exact path="/driver/profile" element={<Driver_Profile/>}/>
+        </Route>
+
+        <Route path='/' element={<DriverSigninPrivateRoute/>}>
+          <Route exact path="/user/register" element={<UserSignupform/>}/>
+          <Route exact path="/user/signin" element={<UserSigninForm/>}/>
+          <Route exact path="/driver/register" element={<DriverSignupform/>}/>
+          <Route element={<DriverSigninForm/>} exact path="/driver/signin"/>
+        </Route>
+
+        
+        
         
       </Routes>
     </Router>
