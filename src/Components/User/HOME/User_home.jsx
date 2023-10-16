@@ -39,10 +39,10 @@ function UserHome() {
             <div className='flex md:w-full mt-1 '>
               <div className='w-1/2'> 
                 <div className='mr-2  bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-neutral-100 to-gray-200 '>
-                  <LastBooking />
+                <PendingPayments />
                 </div> 
                 <div className='bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-neutral-100 to-gray-200 mt-2 mr-2'>
-                  <PendingPayments />
+                  <LastBooking />
                 </div> 
               </div> 
               <div className='bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-neutral-100 to-gray-200 w-1/2'>
