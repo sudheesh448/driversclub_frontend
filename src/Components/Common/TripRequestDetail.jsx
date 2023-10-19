@@ -132,9 +132,25 @@ const TripRequestDetail = () => {
 
   
   const openStartTripModal = () => {
-    setStartTripModalOpen(true);
-  };
+    const currentDate = new Date(); // Get the current date
+    const journeyStartDate = new Date(tripRequest.journey_start_date); // Parse the journey start date
   
+    // Check if the journey start date is today
+    // if (
+    //   journeyStartDate.getDate() === currentDate.getDate() &&
+    //   journeyStartDate.getMonth() === currentDate.getMonth() &&
+    //   journeyStartDate.getFullYear() === currentDate.getFullYear()
+    // ) {
+      setStartTripModalOpen(true);
+    // } else {
+    //   // Display a SweetAlert indicating that the trip cannot be started today
+    //   Swal.fire({
+    //     icon: 'info',
+    //     title: 'Cannot Start Trip',
+    //     text: 'You can only start the trip on the journey start date.',
+    //   });
+    // }
+  };
   const closeStartTripModal = () => {
     setStartTripModalOpen(false);
   };

@@ -26,7 +26,9 @@ function Driver_home() {
 
         {/* Web view */}
         <div className='hidden md:flex w-full mb-2'>
-          <TripRequestCard />
+        
+        <TripRequestCard />
+        
           <div className='w-full md:w-2/3 '>
             {/* Icons */}
             
@@ -35,7 +37,7 @@ function Driver_home() {
               <div className='w-1/2'>
                 
                 <div className='mr-2 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-neutral-100 to-gray-200 '>
-                  <UpComing />
+                <UpComing />
                 </div>
                
                 <div className='bg-[radial_gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-neutral-100 to-gray-200 mt-2 mr-2'>
@@ -45,7 +47,7 @@ function Driver_home() {
               </div>
               
               <div className='shadow-2xl bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-neutral-100 to-gray-200 w-1/2 '>
-              <div className='md:w-full bg-white mr-2 py-2 rounded-sm mb-2 mx-1'>
+              <div className='md:w-full bg-white mr-2 py-2 rounded-sm mb-2 '>
               <Icons />
             </div>
                 <div className='flex w-full bg-gray-500 text-white'>

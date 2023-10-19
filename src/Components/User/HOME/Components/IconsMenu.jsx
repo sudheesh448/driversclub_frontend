@@ -14,6 +14,7 @@ const Navigate = useNavigate()
 const location = useLocation();
 const isProfilePage = location.pathname === '/user/profile';
 const isCarPage = location.pathname === '/user/car';
+const isConfirmPage = location.pathname === '/user/confirmed';
 
 console.log(location)
 
@@ -29,6 +30,13 @@ const navigateToCar = () => {
     }
   }
 
+  const navigateToConfirmed = () => {
+    if(!isConfirmPage){
+      Navigate('/user/confirmed')
+    }
+  }
+
+  
 
   return (
     <>
@@ -43,7 +51,7 @@ const navigateToCar = () => {
       <img src={profilep} alt="" className="w-14 h-14 mx-auto " />
       <h1 className="text-zinc-600 font-semibold text-lg mb-1 mt-3">Profile</h1>
     </div>
-    <div className='shadow-inner w-1/6 px-2 text-center hover:bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-indigo-200 via-yellow-200 to-emerald-800 transition-colors duration-300'>
+    <div onClick={navigateToConfirmed} className='shadow-inner w-1/6 px-2 text-center hover:bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-indigo-200 via-yellow-200 to-emerald-800 transition-colors duration-300'>
       <img src={confirmedlogo} alt="" className="w-14 h-14 mx-auto" />
       <h1 className="text-zinc-600 font-semibold text-lg mb-1 mt-3">Confirmed</h1>
     </div>

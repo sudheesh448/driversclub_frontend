@@ -8,6 +8,7 @@ import Modal from 'react-modal';
 import AxiosInstance from './../../../Components/CustomAxios/axiosInstance';
 import { useSelector } from 'react-redux';
 import { selectUserData } from './../../Redux/authSlice';
+import carhead from './../../../assets/Static/Icons/CarHeading.png'
 
 
 function Car() {
@@ -106,17 +107,25 @@ function Car() {
           <Profile_Left_sidedetails/>
 
           {/* Right Section */}
-          <div className='w-full '>
+          <div className='w-full mt-1 bg-stone-200'>
             <div className='grid grid-cols-2'>
-              <div className='col-span-1 justify-center items-center flex flex-col '>
-                {/* Button for Adding New Car */}
-                <button  onClick={openModal} className="bg-green-500 text-white px-4 rounded-2xl py-2  mb-4">Add New Car</button>
-                {/* Cards for Car Details */}
-                
-              </div>
-              <div className='col-span-1'>
-                {/* Icons Menu */}
+              
+            <div className='col-span-1  bg-sky-900  '>
+  <div className='flex justify-between'>
+    <div className='flex items-center ml-4'>
+      <img className='w-36' src={carhead} alt="" />
+      <p className=' font-bold text-lg text-center ml-4 text-white'>Your Cars</p>
+    </div>
+    <div className=' mr-2 mt-20  text-center items-center justify-end '>
+    <button onClick={openModal} className="bg-green-500 text-white py-1 px-1  rounded-2xl ">Add New Car</button>
+  </div>
+  </div>
+  
+</div>
+              <div className='col-span-1 bg-stone-100 border border-sky-900'>
+                <div className='mt-1'>
                 <IconsMenu />
+                </div>
               </div>
             </div>
 
@@ -131,7 +140,7 @@ function Car() {
   isOpen={isModalOpen}
   onRequestClose={closeModal}
   contentLabel="Add New Car Modal"
-  className="fixed inset-0 flex items-center justify-center z-50"
+  className="fixed inset-0 flex  items-center justify-center z-50"
 >
   <div className="bg-white w-full md:max-w-md mx-auto rounded-lg shadow-lg p-6">
     {isSubmissionSuccess ? (

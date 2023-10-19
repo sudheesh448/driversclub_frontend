@@ -8,8 +8,10 @@ import PendingPayments from './../../User/HOME/Components/PendingPayments'
 import Icons from '../Driver_Home/DriverComponents/Icons';
 import CalendarSchedule from '../Driver_Home/DriverComponents/CalenderSchedule';
 import AwaitingPayments from '../Driver_Home/DriverComponents/AwaitingPayments';
+import Bio from './Driver_profile_components/Bio';
 
 function Driver_Profile() {
+  
   return (
     <>
      <Navbar />
@@ -20,25 +22,27 @@ function Driver_Profile() {
 
           {/* Right Empty Section */}
           <div className='w-full '>
-              <div className="w-full flex"> 
-                
-                <div className='bg-slate-300 w-1/2'>
-                <h1>DRIVER PROFILE</h1>
+              <div className="w-full flex "> 
+                <div className=' mr-2 w-8/12 bg-sky-900 shadow-2xl'>
+                <Bio/>
                 </div>
-                <div className='w-2/4'>
+                <div className='w-5/12 m-0.5 shadow-2xl'>
+                <div className=' bg-white shadow-xl py-2 '>
                <Icons/>
                 </div>
+                </div>
               </div>
-            
-            
-            <div className='w-full bg-red-500 flex'>
-                <div className=' bg-amber-500 w-1/3'>
+            <div className='w-full  flex'>
+                <div className=' w-1/3'>
                 <CalendarSchedule/>
                 </div>
-                <div>
+                
+                <div className='mt-2'>
+                  <Wallet_profile/>
+                </div>
+                <div className='w-64 mt-2  ml-1 shadow-2xl '>
                     <AwaitingPayments/>
                 </div>
-              
               
             </div>
           </div>

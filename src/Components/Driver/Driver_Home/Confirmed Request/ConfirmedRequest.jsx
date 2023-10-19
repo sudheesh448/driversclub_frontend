@@ -8,45 +8,51 @@ import bookmark from './../../../../assets/Static/Icons/bookmark.png';
 import postBox from './../../../../assets/Static/Icons/PostBox.png';
 import fromto from './../../../../assets/Static/Icons/FromTo.png';
 import Icons from '../DriverComponents/Icons';
+import { useSelector } from 'react-redux';
+import { selectUserData } from './../../../Redux/authSlice';
 
 
 
-function RequestPool() {
+function ConfirmedRequest() {
 
-  const [pendingRequests, setPendingRequests] = useState([]);
+  const [confirmedRequests, setConfirmedRequests] = useState([]);
   const [currentPage, setCurrentPage] = useState(1); // Track the current page
   const axiosInstance = AxiosInstance();
   const perPage = 10; // Number of items per page
   const navigate = useNavigate()
-  const fetchPendingRequests = (page) => {
+  const userData = useSelector(selectUserData);
+  const userId = userData.userId;
+
+  const fetchConfirmedRequests = (page) => {
+    const requestBody = {
+      page: page,
+      per_page: perPage,
+      userId: userId,
+    };
     axiosInstance
-      .get('request_pool', {
-        params: {
-          page: page,
-          per_page: perPage,
-        },
-      })
+      .post('request_confirmed/', requestBody)
       .then((response) => {
         if (response.status === 200) {
-          console.log("request pool data",response.data)
-          setPendingRequests(response.data.results);
-          console.log("pendingp",response.data.results);
+          console.log("request confirmed data", response.data);
+          setConfirmedRequests(response.data.results);
+          console.log("confirmed requests", response.data.results);
         }
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
-        
       });
   };
 
+
   useEffect(() => {
-    fetchPendingRequests(currentPage);
+    fetchConfirmedRequests(currentPage);
   }, [currentPage]);
   const changePage = (newPage) => {
     setCurrentPage(newPage); // Update the current page
   };
   
   
+
 
   return (
     <> 
@@ -63,19 +69,19 @@ function RequestPool() {
         <div className=" mt-2 mr-4 flex w-full bg-slate-600">
         <div className='flex'>
         <img className="justify-center mt-0 py-0 w-9" src={bookmark} alt="" />
-        <p className="text-2xl font-semibold mb-4 text-white">Pending Trip Requests</p>
+        <p className="text-2xl font-semibold mb-4 text-white">Confirmed Trip Requests</p>
         </div>
       </div>
           <div className="shadow-xl">
-  {pendingRequests.length > 0 ? (
-    pendingRequests.map((trip) => (
+  {confirmedRequests.length > 0 ? (
+    confirmedRequests.map((trip) => (
       <div key={trip.id}  onClick={() => {
-        navigate(`/trip_request_detail/${trip.id}`);
+        navigate(`/trip_request_detail/${trip.trip_id}`);
       }} className="bg-sky-800 border p-4 font-semibold grid grid-cols-5 gap-2 text-white cursor-pointer transform transition-transform hover:scale-105  hover:text-black hover:bg-orange-200">
         
         <div className='flex'>
           <img  className='w-8' src={postBox} alt="" />
-        <p className='ml-2'>{trip.first_name}</p>
+        <p className='ml-2'>{trip.user_first_name}</p>
         </div>
         <div className='grid grid-cols-5'>
             <div>
@@ -116,8 +122,8 @@ function RequestPool() {
           <span className="bg-sky-800 text-white font-bold p-2 rounded-full mx-4"> {currentPage}</span>
           <button
             onClick={() => changePage(currentPage + 1)}
-            disabled={pendingRequests.length < perPage}
-            className={`bg-blue-500 cursor-pointer text-white p-2 rounded ${pendingRequests.length < perPage ? 'opacity-50 ' : ''}`}
+            disabled={confirmedRequests.length < perPage}
+            className={`bg-blue-500 cursor-pointer text-white p-2 rounded ${confirmedRequests.length < perPage ? 'opacity-50 ' : ''}`}
           >
             Next 
           </button>
@@ -126,6 +132,7 @@ function RequestPool() {
       </div>
       <Footer />
     </>
-  );
+  )
 }
-export default RequestPool
+
+export default ConfirmedRequest

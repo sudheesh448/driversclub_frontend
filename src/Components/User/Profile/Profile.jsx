@@ -3,7 +3,7 @@ import Footer from '../../Footer/Footer';
 import Navbar from '../../NavBar/Navbar';
 import IconsMenu from '../HOME/Components/IconsMenu';
 import Profile_Left_sidedetails from './ProfileComponents/Profile_Left_sidedetails';
-import Wallet_profile from './ProfileComponents/wallet_profile';
+import Wallet_profile from './ProfileComponents/Wallet_profile';
 import Wallet_PendingPayments from './ProfileComponents/Wallet_PendingPayments';
 import Reward_Points from './ProfileComponents/Reward_Points';
 import LastBooking from '../HOME/Components/LastBooking';
@@ -22,7 +22,9 @@ function Profile() {
           <div className='w-full  grid grid-cols-2'>
             <div className='col-span-1'>
               <div className="m-2"> 
+              <div className='bg-slate-300 mb-2'>
                 <Wallet_profile/>
+                </div>
                 <div className='bg-slate-300'>
                 <PendingPayments/>
                 </div>
@@ -31,10 +33,12 @@ function Profile() {
 
             <div className='col-span-1'>
               <div className="m-2"> 
-                <div>
+                <div className=' border-orange-500 border shadow-lg'>
                   <IconsMenu/>
                 </div>
+                <div className='mt-2'>
                 <Reward_Points/>
+                </div>
                 <div className='bg-slate-300'>
                 <LastBooking/>
                 </div>

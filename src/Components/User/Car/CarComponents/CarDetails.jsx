@@ -34,7 +34,8 @@ function CarDetails() {
     <>
     <div className="grid grid-cols-2 gap-4">
       {cars.map((car) => (
-        <div key={car.id} className="bg-white p-4 rounded-lg shadow-lg">
+        <div key={car.id} className="bg-sky-800 p-4 mx-4 my-4 flex shadow-2xl rounded-lg shadow-lg">
+          <div className='w-1/2'>
           <img
               src={car.photo
                 ? (car.photo instanceof File || car.photo instanceof Blob)
@@ -42,12 +43,15 @@ function CarDetails() {
                   : `${BASE_IMAGE_URL}${car.photo}` 
                 : ''}
               alt={`Car ${car.make} ${car.model}`}
-              className="w-32 h-32 rounded-full mx-auto mb-4"
+              className="w-32 h-32 border border-white rounded-full mx-auto mb-4"
           />
-          <h3 className="text-lg font-semibold">{`${car.make} ${car.model}`}</h3>
-          <p className="text-gray-600">{`Year: ${car.year_of_make}`}</p>
-          <p className="text-gray-600">{`Register Number: ${car.register_number}`}</p>
-          <p className="text-gray-600">{`Owner ID: ${car.owner}`}</p>
+          </div>
+          <div>
+          <h3 className="text-white text-lg font-semibold">{`${car.make} ${car.model}`}</h3>
+          <p className="text-white">{`Year: ${car.year_of_make}`}</p>
+          <p className="text-white">{`Register Number: ${car.register_number}`}</p>
+          <p className="text-white">{`Owner ID: ${car.owner}`}</p>
+        </div>
         </div>
       ))}
     </div>

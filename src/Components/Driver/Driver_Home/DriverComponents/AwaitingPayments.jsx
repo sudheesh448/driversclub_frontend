@@ -3,6 +3,10 @@ import bookmark from './../../../../assets/Static/Icons/bookmark.png';
 import AxiosInstance from '../../../CustomAxios/axiosInstance';
 import { useSelector } from 'react-redux';
 import { selectUserData } from '../../../Redux/authSlice';
+import driverwaiting from './../../../../assets/Static/Icons/Driver_Waiting.png';
+import driverpayment from './../../../../assets/Static/Icons/driverpaymentdone.png';
+import Swal from "sweetalert2";
+
 function AwaitingPayments() {
 
   const [pendingPayments, setPendingPayments] = useState([]);
@@ -18,7 +22,7 @@ function AwaitingPayments() {
       .get(`/awaiting_payments?page=${currentPage}&per_page=${paymentsPerPage}&user_id=${userId}`)
       .then((response) => {
         if (response.status === 200) {
-          console.log(response.data);
+          console.log("response",response.data);
           setPendingPayments(response.data);
         }
       })
@@ -39,19 +43,55 @@ function AwaitingPayments() {
     }
   };
 
+
+  const handleRemaind = (tripId) => {
+    console.log("remainder trip",tripId)
+    axiosInstance
+      .post('send_reminder/', { tripId })
+      .then((response) => {
+        if (response.status === 200) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Reminder sent successfully',
+          });
+          console.log('Reminder sent successfully');
+        }
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Error sending reminder: ' + error.message,
+        });
+        console.error('Error sending reminder:', error);
+      });
+  };
+
+
   const currentPayment = pendingPayments[currentIndex] || {};
   return (
-    <>
+    <div className=''>
         <div className=' flex w-full bg-slate-600 text-gray-50'>
             <img className='justify-center mt-0 py-0 w-9' src={bookmark} alt="" />
             <p className='font-medium '>Awaiting Payments</p>
         </div>
         <div className="bg-white rounded-lg shadow-lg p-4 border border-x-4 border-y-4 border-slate-200">
+        {pendingPayments.length === 0 ? ( // Check if there are no pending payments
+        <div className=''>
+          <div className='items-center justify-center text-center'>
+            <p className='text-3xl   font-bold text-sky-800'>Congrats!!!</p>
+          <p className='text-xl mt-6 font-bold text-sky-800'>All pending payments have been received.</p>
+          </div>
+          <div className='justify-center flex'>
+          <img className='w-40' src={driverpayment} alt="" />
+          </div>
+          </div>
+        ) : (
         <div className="w-full card">
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 gap-4">
             <div className="col-span-3 sm:col-span-1">
               <p className="text-gray-600">Trip ID</p>
-              <p className="font-semibold">{currentPayment.id}</p>
+              <p className="font-semibold">{currentPayment.trip_id}</p>
             </div>
             <div className="col-span-3 sm:col-span-1">
               <p className="text-gray-600">From</p>
@@ -75,12 +115,16 @@ function AwaitingPayments() {
             </div>
           </div>
           <button
-            onClick={() => handlePayNow(currentPayment.trip_id)}
+            onClick={() => handleRemaind(currentPayment.trip_id)}
             className="mt-4 bg-blue-500 text-white py-2 px-4 rounded-md hover-bg-blue-600 focus:outline-none"
           >
            Remaind
           </button>
+          <div>
+          <img src={driverwaiting} alt="" />
+          </div>
         </div>
+        )}
         <div className='flex mt-3 justify-end'>
         {pendingPayments.length > 1 && currentIndex != 0 && (
           <button
@@ -89,7 +133,8 @@ function AwaitingPayments() {
           disabled={currentIndex === 0}
         >
           Prev
-        </button> )}
+        </button> 
+        )}
         {pendingPayments.length > 1 && currentIndex != pendingPayments.length - 1 && (
         <button
         onClick={handleNextPage}
@@ -97,11 +142,11 @@ function AwaitingPayments() {
         disabled={currentIndex === pendingPayments.length - 1}
         >
         Next
-        </button>)}
+        </button>
+        )}
         </div>
-        
       </div>
-    </>
+    </div>
   );
 }
 

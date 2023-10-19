@@ -21,7 +21,7 @@ function UserHome() {
   return (
     <>
       <Navbar />
-      <div className='mt-14'>
+      <div className='mt-14 '>
         <Head />
         <div className='shadow bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-neutral-100 to-gray-200 '>
           <Mobilehead />
@@ -29,7 +29,7 @@ function UserHome() {
 
         {/* Web view */}
         <div className='hidden md:flex w-full mb-2 '>
-          <div className='shadow-2xl md:w-1/3 flex mr-2 items-center justify-center flex-col mt-2 rounded-md px-2 ml-2 bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-indigo-200 via-yellow-200 to-emerald-800'>
+          <div className='shadow-2xl md:w-1/3 flex mr-2 items-center mt-1  flex-col  rounded-md px-2 ml-2 bg-sky-950'>
             <Booking />
           </div>
           <div className='w-full md:w-2/3 '>
@@ -55,7 +55,7 @@ function UserHome() {
         
         {/* Mobile view */}
         {/* Booking */}
-        <div className='md:hidden shadow-2xl md:w-1/3 flex mr-2 items-center justify-center flex-col mt-2 rounded-md px-2 ml-2 bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-indigo-200 via-yellow-200 to-emerald-800'>
+        <div className='md:hidden shadow-2xl md:w-1/3 flex mr-2 items-center justify-center flex-col mt-2 rounded-md px-2 ml-2 bg-sky-950'>
           <Booking />
         </div>
         <div className='w-full md:hidden'>

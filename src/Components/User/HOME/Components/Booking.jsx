@@ -42,10 +42,7 @@ function Booking() {
             console.error('Error fetching cars:', error);
           });
       };
-    
-    
-    
-       
+     
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -133,7 +130,7 @@ function Booking() {
 
   return (
     <>
-        <h1 className="text-zinc-600 font-bold text-xl mb-1 mt-3">Book Your Driver Now</h1>
+        <h1 className="text-white font-bold text-xl mb-1 mt-10">Book Your Driver Now</h1>
   <form onSubmit={handleSubmit}>
   <div className="w-64 mb-2 mt-4">
       <select
@@ -170,7 +167,7 @@ function Booking() {
   </div>
 
   <div className="w-64">
-      <label htmlFor="time" className="block text-gray-700 font-normal mb-2">
+      <label htmlFor="time" className="block text-white font-normal mb-2">
         Select a time:
       </label>
       <input
@@ -245,7 +242,7 @@ function Booking() {
           checked={formData.is_return}
           className="rounded border text-sm border-gray-300 py-2 px-3 text-gray-700 focus:outline-none focus:ring focus:border-blue-400"
         />
-        <span className="text-gray-700">No return</span>
+        <span className="text-white">No return</span>
       </label>
     </div>
 
@@ -260,7 +257,7 @@ function Booking() {
       onChange={handleInputChange}
       className="rounded border text-sm border-gray-300 py-2 px-3 text-gray-700 focus:outline-none focus:ring focus:border-blue-400"
     />
-    <span className="text-gray-700">Accept Terms and conditions</span>
+    <span className="text-white">Accept Terms and conditions</span>
   </label>
 </div>
 

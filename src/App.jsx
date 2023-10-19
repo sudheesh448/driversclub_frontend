@@ -21,6 +21,9 @@ import Car from './Components/User/Car/Car'
 import CommonPrivateRoutes from './Components/PrivateRoutes/CommonPrivateRoutes'
 import Driver_Profile from './Components/Driver/Driver_Profile/Driver_Profile'
 import RequestPool from './Components/Driver/Driver_Home/RequestPool/RequestPool'
+import ConfirmedRequest from './Components/Driver/Driver_Home/Confirmed Request/ConfirmedRequest'
+import RequestHistory from './Components/Driver/Driver_Home/History/RequestHistory'
+import UserConfirmed from './Components/User/Confirmed/UserConfirmed'
 
 
 
@@ -58,12 +61,14 @@ function App() {
           <Route exact path="/user/profile" element={<Profile/>}/>
           <Route exact path="/user/car" element={<Car/>}/>
            <Route exact path="/"  element={<UserHome/>}/>
-           
+           <Route exact path="/user/confirmed" element={<UserConfirmed/>}/>
         </Route>
 
         <Route path='/' element={<DriverPrivateRoutes/>}>
           <Route element={<Driver_home/>} exact path="/driver/home" />
           <Route element={<RequestPool/>} exact path="/driver/requestpool" />
+          <Route element={<ConfirmedRequest/>} exact path="/driver/confirmedrequests" />
+          <Route element={<RequestHistory/>} exact path="/driver/trip_history"/>
           <Route exact path="/driver/profile" element={<Driver_Profile/>}/>
         </Route>
 
