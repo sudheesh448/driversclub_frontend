@@ -18,7 +18,7 @@ function Wallet_profile() {
         const response = await axiosInstance.post('fetch_wallet_balance/', {
           userId: userId, // Include the userId in the POST data
         });
-        setWalletBalance(response.data.wallet_balance);
+        setWalletBalance(response.data.wallet_balance.toFixed(2));
       } catch (error) {
         // Handle any error here
         console.error('Error fetching wallet balance:', error);

@@ -15,6 +15,8 @@ const location = useLocation();
 const isProfilePage = location.pathname === '/user/profile';
 const isCarPage = location.pathname === '/user/car';
 const isConfirmPage = location.pathname === '/user/confirmed';
+const isPendingPage = location.pathname === '/user/pending';
+const isHistoryPage = location.pathname === '/user/history'
 
 console.log(location)
 
@@ -35,44 +37,55 @@ const navigateToCar = () => {
       Navigate('/user/confirmed')
     }
   }
+  
+  const navigateToPending = () => {
+    if(!isPendingPage){
+      Navigate('/user/pending')
+    }
+  }
+  const navigateToHistory = () => {
+    if(!isHistoryPage){
+      Navigate('/user/history')
+    }
+  }
 
   
 
   return (
     <>
-    <div className='flex justify-between '>
+    <div className='flex justify-between  '>
       
     <div
           onClick={navigateToProfile}
-          className={`shadow-inner w-1/6 px-2 text-center hover:bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-indigo-200 via-yellow-200 to-emerald-800 transition-colors duration-300 ${
+          className={`z-50 shadow-inner w-1/6 px-2 text-center hover:bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-indigo-200 via-yellow-200 to-emerald-800 transition-colors duration-300 ${
             isProfilePage ? 'bg-gray-300 ' : ''
           }`}
         >
-      <img src={profilep} alt="" className="w-14 h-14 mx-auto " />
-      <h1 className="text-zinc-600 font-semibold text-lg mb-1 mt-3">Profile</h1>
+      <img src={profilep} alt="" className="w-12 h-12 mx-auto " />
+      <h1 className="text-zinc-600 font-semibold text-sm mb-1 mt-3">Profile</h1>
     </div>
-    <div onClick={navigateToConfirmed} className='shadow-inner w-1/6 px-2 text-center hover:bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-indigo-200 via-yellow-200 to-emerald-800 transition-colors duration-300'>
-      <img src={confirmedlogo} alt="" className="w-14 h-14 mx-auto" />
-      <h1 className="text-zinc-600 font-semibold text-lg mb-1 mt-3">Confirmed</h1>
+    <div onClick={navigateToConfirmed} className=' z-50 shadow-inner w-1/6 px-2 text-center hover:bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-indigo-200 via-yellow-200 to-emerald-800 transition-colors duration-300'>
+      <img src={confirmedlogo} alt="" className="w-12 h-12 mx-auto" />
+      <h1 className="text-zinc-600 font-semibold text-sm mb-1 mt-3">Confirmed</h1>
     </div>
-    <div className='shadow-inner w-1/6 px-2 text-center hover:bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-indigo-200 via-yellow-200 to-emerald-800 transition-colors duration-300'>
-      <img src={Pendinglogo} alt="" className="w-14 h-14 mx-auto" />
-      <h1 className="text-zinc-600 font-semibold text-lg mb-1 mt-3">Pending</h1>
+    <div onClick={navigateToPending} className='z-50 shadow-inner w-1/6 px-2 text-center hover:bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-indigo-200 via-yellow-200 to-emerald-800 transition-colors duration-300'>
+      <img src={Pendinglogo} alt="" className="w-12 h-12 mx-auto" />
+      <h1 className="text-zinc-600 font-semibold text-sm mb-1 mt-3">Pending</h1>
     </div>
-    <div className='shadow-inner w-1/6 px-2 text-center hover:bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-indigo-200 via-yellow-200 to-emerald-800 transition-colors duration-300'>
-      <img src={historylogo} alt="" className="w-14 h-14 mx-auto" />
-      <h1 className="text-zinc-600 font-semibold text-lg mb-1 mt-3">History</h1>
+    <div onClick={navigateToHistory} className='z-50 shadow-inner w-1/6 px-2 text-center hover:bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-indigo-200 via-yellow-200 to-emerald-800 transition-colors duration-300'>
+      <img src={historylogo} alt="" className="w-12 h-12 mx-auto" />
+      <h1 className="text-zinc-600 font-semibold text-sm mb-1 mt-3">History</h1>
     </div>
-    <div className='shadow-inner w-1/6 px-2 text-center hover:bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-indigo-200 via-yellow-200 to-emerald-800 transition-colors duration-300'>
-      <img src={favoritelogo} alt="" className="w-14 h-14 mx-auto" />
-      <h1 className="text-zinc-600 font-semibold text-lg mb-1 mt-3">Favorite</h1>
+    <div className='z-50 shadow-inner w-1/6 px-2 text-center hover:bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-indigo-200 via-yellow-200 to-emerald-800 transition-colors duration-300'>
+      <img src={favoritelogo} alt="" className="w-12 h-12 mx-auto" />
+      <h1 className="text-zinc-600 font-semibold text-sm mb-1 mt-3">Favorite</h1>
     </div>
 
-    <div  onClick={navigateToCar} className={`shadow-inner w-1/6 px-2 text-center hover:bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-indigo-200 via-yellow-200 to-emerald-800 transition-colors duration-300 ${
+    <div  onClick={navigateToCar} className={`z-50 shadow-inner w-1/6 px-2 text-center hover:bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-indigo-200 via-yellow-200 to-emerald-800 transition-colors duration-300 ${
             isCarPage ? 'bg-gray-300 ' : ''
           }`}>
-      <img src={carlogo} alt="" className="w-14 h-14 mx-auto" />
-      <h1 className="text-zinc-600 font-semibold text-lg mb-1 mt-3">Cars</h1>
+      <img src={carlogo} alt="" className="w-12 h-12 mx-auto" />
+      <h1 className="text-zinc-600 font-semibold text-sm mb-1 mt-3">Cars</h1>
     </div>
   </div>
     </>

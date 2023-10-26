@@ -41,7 +41,11 @@ function CalendarSchedule() {
         console.log("check res",response.data)
         {
                 axiosInstance
-              .get(`tripdetail/${trip_id}`)
+              .get(`tripdetail/${trip_id}`, {
+                params: {
+                  userId: userId, // Include the user ID as a parameter
+                }
+              })
               .then((tripResponse) => {
 
                 console.log("Trip Details:", tripResponse.data);

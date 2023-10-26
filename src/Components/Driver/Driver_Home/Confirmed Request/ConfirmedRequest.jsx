@@ -10,6 +10,7 @@ import fromto from './../../../../assets/Static/Icons/FromTo.png';
 import Icons from '../DriverComponents/Icons';
 import { useSelector } from 'react-redux';
 import { selectUserData } from './../../../Redux/authSlice';
+import Swal from 'sweetalert2';
 
 
 
@@ -121,11 +122,20 @@ function ConfirmedRequest() {
           </button>
           <span className="bg-sky-800 text-white font-bold p-2 rounded-full mx-4"> {currentPage}</span>
           <button
-            onClick={() => changePage(currentPage + 1)}
+            onClick={() => {
+              if (confirmedRequests.length === 0) {
+                // Show a SweetAlert when confirmedRequests length is 0
+                Swal.fire('No more pages', 'No more confirmed trip requests found.', 'info');
+              } else {
+                changePage(currentPage + 1);
+              }
+            }}
             disabled={confirmedRequests.length < perPage}
-            className={`bg-blue-500 cursor-pointer text-white p-2 rounded ${confirmedRequests.length < perPage ? 'opacity-50 ' : ''}`}
+            className={`bg-blue-500 cursor-pointer text-white p-2 rounded ${
+              confirmedRequests.length < perPage ? "opacity-50 " : ""
+            }`}
           >
-            Next 
+            Next
           </button>
           </div>
         </div>
@@ -134,5 +144,4 @@ function ConfirmedRequest() {
     </>
   )
 }
-
 export default ConfirmedRequest

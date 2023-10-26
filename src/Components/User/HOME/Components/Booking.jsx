@@ -4,6 +4,10 @@ import AxiosInstance from './../../../CustomAxios/axiosInstance'
 import Swal from 'sweetalert2';
 import { useSelector } from 'react-redux';
 import { selectUserData } from './../../../Redux/authSlice';
+import Lottie from 'lottie-react';
+import CarMove from './../../../../assets/Static/animations/CarMove.json';
+import { useSpring, animated } from 'react-spring';
+
 
 function Booking() {
     const [cars, setCars] = useState([]);
@@ -127,6 +131,22 @@ function Booking() {
     
       // Disable return date if no journey start date selected
       const isReturnDateDisabled = !formData.journey_start_date;
+
+
+      function AnimatedCar() {
+        
+        const animationProps = useSpring({
+          from: { transform: 'translateX(100%)' }, // Start from the right
+          to: { transform: 'translateX(0%)' }, // Move to the left
+          config: { duration: 1000 }, // Animation duration in milliseconds
+        });
+        
+        return (
+          <animated.div className='absolute mt-14 bottom-0 left-0 z-30 w-52' style={animationProps}>
+            <Lottie className='z-50' animationData={CarMove} />
+          </animated.div>
+        );
+      }
 
   return (
     <>

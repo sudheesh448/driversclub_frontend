@@ -12,7 +12,7 @@ import { selectUserData } from './../../../Components/Redux/authSlice';
 import IconsMenu from '../HOME/Components/IconsMenu';
 import Profile_Left_sidedetails from '../Profile/ProfileComponents/Profile_Left_sidedetails';
 
-function UserConfirmed() {
+function HistoryUser() {
     const [confirmedRequests, setConfirmedRequests] = useState([]);
     const [currentPage, setCurrentPage] = useState(1); // Track the current page
     const axiosInstance = AxiosInstance();
@@ -28,7 +28,7 @@ function UserConfirmed() {
         userId: userId,
       };
       axiosInstance
-        .post('user_request_confirmed/', requestBody)
+        .post(`user_request_history/?page=${page}`, requestBody)
         .then((response) => {
           if (response.status === 200) {
             console.log("request confirmed data", response.data);
@@ -45,31 +45,29 @@ function UserConfirmed() {
     useEffect(() => {
       fetchConfirmedRequests(currentPage);
     }, [currentPage]);
+    
     const changePage = (newPage) => {
-      setCurrentPage(newPage); // Update the current page
+      setCurrentPage(newPage); 
     };
     
     return (
-      <> 
+     <div className=''>
       <Navbar/>
-      <div className='w-full mt-12 flex md:h-screen'>
-          
+      <div className='w-full mt-12 flex'>
           <Profile_Left_sidedetails/>
           <div className='w-full shadow-2xl p-4'>
-  
           <div className=" mt-2 mr-4 flex w-full bg-slate-600">
           <div className='flex'>
           <img className="justify-center mt-0 py-0 w-9" src={bookmark} alt="" />
-          <p className="text-2xl font-semibold mb-4 text-white">Confirmed Trip Requests</p>
+          <p className="text-2xl font-semibold mb-4 text-white"> Requests History</p>
           </div>
         </div>
-            <div className="shadow-xl">
-    {confirmedRequests.length > 0 ? (
-      confirmedRequests.map((trip) => (
+        <div className="shadow-xl">
+        {confirmedRequests.length > 0 ? (
+        confirmedRequests.map((trip) => (
         <div key={trip.id}  onClick={() => {
           navigate(`/trip_request_detail/${trip.id}`);
-        }} className="bg-sky-800 border p-4 font-semibold grid grid-cols-5 gap-2 text-white cursor-pointer transform transition-transform hover:scale-105  hover:text-black hover:bg-orange-200">
-          
+        }} className="bg-sky-800 border p-4 font-semibold grid grid-cols-5 gap-2 text-white cursor-pointer transform transition-transform   hover:text-black hover:bg-orange-200">
           <div className='flex'>
             <img  className='w-8' src={postBox} alt="" />
           <p className='ml-2'>{trip.user_first_name}</p>
@@ -101,8 +99,9 @@ function UserConfirmed() {
     ) : (
       <p className="col-span-5">No pending trip requests found.</p>
     )}
+    
   </div>
-            <div className='pagination mt-2 flex justify-center '>
+            <div className='pagination mt-2 mb-4 flex justify-center '>
             <button
               onClick={() => changePage(currentPage - 1)}
               disabled={currentPage === 1}
@@ -121,9 +120,10 @@ function UserConfirmed() {
             </div>
           </div>
         </div>
-        <Footer />
-      </>
+        <Footer/>
+        </div>
     )
 }
 
-export default UserConfirmed
+
+export default HistoryUser

@@ -45,7 +45,7 @@ const navigateToHistory = () => {
     <div onClick={navigateToProfile} className={` cursor-pointer w-1/4 px-2 py-2 text-center hover:bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-indigo-200 via-yellow-200 to-emerald-800 transition-colors duration-300 ${
             isProfilePage ? 'bg-gray-300 ' : ''
           }` }>
-      <img src={profilep} alt="" className="w-12 h-12 mx-auto " />
+      <img src={profilep} alt="" className="w-14 h-14 mx-auto " />
       <h1 className="text-zinc-600 font-semibold text-sm mb-1 mt-3">Profile</h1>
     </div>
 

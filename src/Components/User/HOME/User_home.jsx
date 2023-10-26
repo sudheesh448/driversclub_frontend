@@ -11,24 +11,27 @@ import LastBooking from './Components/LastBooking';
 import IconsMenu from './Components/IconsMenu';
 import PendingPayments from './Components/PendingPayments';
 import HistoryInHome from './Components/HistoryInHome';
+import CarRightToLeft from './Components/CarAnimations/CarRightToLeft';
+import CarLeftToRight from './Components/CarAnimations/CarLeftToRight';
+
 
 function UserHome() {
   const navigate = useNavigate();
   
-
-  
-
   return (
     <>
       <Navbar />
+    
       <div className='mt-14 '>
         <Head />
+        
         <div className='shadow bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-neutral-100 to-gray-200 '>
           <Mobilehead />
         </div>
-
+        
         {/* Web view */}
         <div className='hidden md:flex w-full mb-2 '>
+          
           <div className='shadow-2xl md:w-1/3 flex mr-2 items-center mt-1  flex-col  rounded-md px-2 ml-2 bg-sky-950'>
             <Booking />
           </div>
@@ -45,7 +48,7 @@ function UserHome() {
                   <LastBooking />
                 </div> 
               </div> 
-              <div className='bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-neutral-100 to-gray-200 w-1/2'>
+              <div className=' bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-neutral-100 to-gray-200 w-1/2'>
                 <HistoryInHome />
               </div>
             </div> 

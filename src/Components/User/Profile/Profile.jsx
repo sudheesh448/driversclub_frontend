@@ -13,8 +13,8 @@ function Profile() {
   return (
     <>
       <Navbar />
-      <div className='md:block flex md:w-full h-full mt-12 '>
-        <div className='flex'>
+      <div className='md:block flex md:w-full h-full mt-12  '>
+        <div className='flex md:h-screen'>
           {/* Left Image Section */}
           <Profile_Left_sidedetails/>
 

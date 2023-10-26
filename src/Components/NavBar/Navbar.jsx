@@ -39,9 +39,7 @@ import { selectUserData } from './../Redux/authSlice';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-
-
-
+import CarLeftToRight from '../User/HOME/Components/CarAnimations/CarLeftToRight';
 
 
 function Navbar() {
@@ -51,13 +49,9 @@ function Navbar() {
   const { accessToken,isAuthenticated,is_driver,refreshToken } = userData;
   const axiosInstance = AxiosInstance(accessToken);   
   const [isNavOpen, setIsNavOpen] = useState(false);
-
-  
-  
   const name = userData ? userData.first_name : '';
   const isDriver = userData.is_driver
   const greeting = name ? `Hi ${name}` : 'Hi Guest';
-
   const handleLogout = async () => {
     try {
       
@@ -90,9 +84,12 @@ function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 w-full bg-[#d7dae2] py-1 px-4 h-13 mx-auto my-auto z-50">
+      <nav className="fixed top-0 w-full bg-[#d7dae2] py-1 px-4 h-13 mx-auto my-auto z-30">
+      <CarLeftToRight/>
         <div className="mx-auto flex justify-between items-center">
+        
           <div className="text-white text-2xl font-semibold">
+          
             <img src={logo} alt="Drivers_club_logo" className="h-11 w-auto" />
           </div>
           <nav>
@@ -103,20 +100,20 @@ function Navbar() {
                   <p>{greeting}</p>
                 </h1>
               </li>
-              <li>
+              <li className='z-50 cursor-pointer'>
               <a href={isDriver ? '/driver/home' : '/'}>
                   <FontAwesomeIcon icon="fa-solid fa-house" size="xl" />
                 </a>
               </li>
               {isAuthenticated && (
-                <li className="cursor-pointer" onClick={handleLogout}>
+                <li className="cursor-pointer z-50" onClick={handleLogout}>
                   <FontAwesomeIcon
                     icon="fa-solid fa-right-from-bracket"
                     size="xl"
                   />
                 </li>
               )}
-{isAuthenticated ? null : (
+          {isAuthenticated ? null : (
           <li className="  cursor-pointer"
           onClick={() => setIsNavOpen((prev) => !prev)}>
     
@@ -126,12 +123,9 @@ function Navbar() {
           <div className={` ${isNavOpen ? '' : 'hidden'}`}>
             <FontAwesomeIcon size="xl" icon={faXmark} spin style={{ color: '#171717' }} />
           </div>
-        
               </li>
-)}
-              
+              )} 
             </ul>
-
             <div
           className={`absolute ${isNavOpen ? 'block' : 'hidden'} rounded-sm w-64 opacity-90 h-auto bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-indigo-200 via-sky-200 to-gray-100 flex flex-col items-start pt-4 top-16 right-4`}
         >
@@ -153,10 +147,12 @@ function Navbar() {
               </a>
             </li>
             <li className="mt-4 ml-2 flex items-center mb-4">
+            <a href="/admin/signin">
             <FontAwesomeIcon icon="fa-solid fa-arrow-right-to-bracket" size="xl" />
               <label className="font-semibold mx-3 " htmlFor="">
                 Admin Sign in
               </label>
+              </a>
             </li>
             </ul>
         </div>

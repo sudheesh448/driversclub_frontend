@@ -24,6 +24,14 @@ import RequestPool from './Components/Driver/Driver_Home/RequestPool/RequestPool
 import ConfirmedRequest from './Components/Driver/Driver_Home/Confirmed Request/ConfirmedRequest'
 import RequestHistory from './Components/Driver/Driver_Home/History/RequestHistory'
 import UserConfirmed from './Components/User/Confirmed/UserConfirmed'
+import AdminSigninForm from './Components/Authentication/Admin/AdminSigninForm'
+import AdminDashboard from './Components/Admin/AdminDashboard/AdminDashboard'
+import UserList from './Components/Admin/UserList/Userlist.jsx'
+import ProfileViewAdmin from './Components/Admin/ProfileView/ProfileViewAdmin'
+import DriverList from './Components/Admin/DriverList/DriverList'
+import Requests from './Components/Admin/Requests/Requests'
+import Pending from './Components/User/pending/Pending'
+import HistoryUser from './Components/User/History/HistoryUser'
 
 
 
@@ -62,6 +70,8 @@ function App() {
           <Route exact path="/user/car" element={<Car/>}/>
            <Route exact path="/"  element={<UserHome/>}/>
            <Route exact path="/user/confirmed" element={<UserConfirmed/>}/>
+           <Route exact path="/user/pending" element={<Pending/>}/>
+           <Route exact path="/user/history" element={<HistoryUser/>}/>
         </Route>
 
         <Route path='/' element={<DriverPrivateRoutes/>}>
@@ -79,9 +89,12 @@ function App() {
           <Route element={<DriverSigninForm/>} exact path="/driver/signin"/>
         </Route>
 
-        
-        
-        
+        <Route element={<AdminSigninForm/>} exact path="/admin/signin"/>
+        <Route element={<AdminDashboard/>} exact path="/admin/home"/>
+        <Route element={<UserList/>} exact path="/admin/userlist"/>
+        <Route exact path="/admin/userdetail/:user_id" element={<ProfileViewAdmin/>}/>
+        <Route element={<DriverList/>} exact path="/admin/driverlist"/>
+        <Route element={<Requests/>} exact path="/admin/Requests"/>
       </Routes>
     </Router>
     

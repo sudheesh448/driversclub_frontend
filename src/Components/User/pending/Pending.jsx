@@ -12,7 +12,7 @@ import { selectUserData } from './../../../Components/Redux/authSlice';
 import IconsMenu from '../HOME/Components/IconsMenu';
 import Profile_Left_sidedetails from '../Profile/ProfileComponents/Profile_Left_sidedetails';
 
-function UserConfirmed() {
+function Pending() {
     const [confirmedRequests, setConfirmedRequests] = useState([]);
     const [currentPage, setCurrentPage] = useState(1); // Track the current page
     const axiosInstance = AxiosInstance();
@@ -28,7 +28,7 @@ function UserConfirmed() {
         userId: userId,
       };
       axiosInstance
-        .post('user_request_confirmed/', requestBody)
+        .post('user_request_pending/', requestBody)
         .then((response) => {
           if (response.status === 200) {
             console.log("request confirmed data", response.data);
@@ -60,7 +60,7 @@ function UserConfirmed() {
           <div className=" mt-2 mr-4 flex w-full bg-slate-600">
           <div className='flex'>
           <img className="justify-center mt-0 py-0 w-9" src={bookmark} alt="" />
-          <p className="text-2xl font-semibold mb-4 text-white">Confirmed Trip Requests</p>
+          <p className="text-2xl font-semibold mb-4 text-white">Pending Trip Requests</p>
           </div>
         </div>
             <div className="shadow-xl">
@@ -126,4 +126,5 @@ function UserConfirmed() {
     )
 }
 
-export default UserConfirmed
+
+export default Pending

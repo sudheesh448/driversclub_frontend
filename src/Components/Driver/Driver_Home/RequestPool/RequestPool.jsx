@@ -8,7 +8,7 @@ import bookmark from './../../../../assets/Static/Icons/bookmark.png';
 import postBox from './../../../../assets/Static/Icons/PostBox.png';
 import fromto from './../../../../assets/Static/Icons/FromTo.png';
 import Icons from '../DriverComponents/Icons';
-
+import Swal from 'sweetalert2';
 
 
 function RequestPool() {
@@ -16,8 +16,10 @@ function RequestPool() {
   const [pendingRequests, setPendingRequests] = useState([]);
   const [currentPage, setCurrentPage] = useState(1); // Track the current page
   const axiosInstance = AxiosInstance();
+  const [responseStatus, setResponseStatus] = useState(200);
   const perPage = 10; // Number of items per page
   const navigate = useNavigate()
+
   const fetchPendingRequests = (page) => {
     axiosInstance
       .get('request_pool', {
@@ -35,13 +37,23 @@ function RequestPool() {
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
-        
+        setResponseStatus(404);
+        if (currentPage > 1 && error.response && error.response.status === 404) {
+          setCurrentPage(currentPage - 1);
+        }
+        Swal.fire({
+          icon: 'info',
+          title: 'No more request',
+          text: 'There are no more pending trip requests.',
+        });
       });
   };
 
   useEffect(() => {
     fetchPendingRequests(currentPage);
   }, [currentPage]);
+
+  
   const changePage = (newPage) => {
     setCurrentPage(newPage); // Update the current page
   };
@@ -116,10 +128,12 @@ function RequestPool() {
           <span className="bg-sky-800 text-white font-bold p-2 rounded-full mx-4"> {currentPage}</span>
           <button
             onClick={() => changePage(currentPage + 1)}
-            disabled={pendingRequests.length < perPage}
-            className={`bg-blue-500 cursor-pointer text-white p-2 rounded ${pendingRequests.length < perPage ? 'opacity-50 ' : ''}`}
+            disabled={pendingRequests.length < perPage || responseStatus === 404}
+            className={`bg-blue-500 cursor-pointer text-white p-2 rounded ${
+              pendingRequests.length < perPage || responseStatus === 404 ? 'opacity-50 ' : ''
+            }`}
           >
-            Next 
+            Next
           </button>
           </div>
         </div>
