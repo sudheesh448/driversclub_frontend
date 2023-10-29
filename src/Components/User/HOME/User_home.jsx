@@ -36,7 +36,7 @@ function UserHome() {
             <Booking />
           </div>
           <div className='w-full md:w-2/3 '>
-            <div className='md:w-full  bg-white  mr-2 py-2 rounded-sm mt-2 '>
+            <div className='md:w-full  bg-white -z-50 mr-2 py-2 rounded-sm mt-2 '>
               <IconsMenu />
             </div>
             <div className='flex md:w-full mt-1 '>

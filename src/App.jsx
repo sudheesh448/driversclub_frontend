@@ -32,6 +32,7 @@ import DriverList from './Components/Admin/DriverList/DriverList'
 import Requests from './Components/Admin/Requests/Requests'
 import Pending from './Components/User/pending/Pending'
 import HistoryUser from './Components/User/History/HistoryUser'
+import ChatUser from './Components/Chat/ChatUser'
 
 
 
@@ -95,6 +96,7 @@ function App() {
         <Route exact path="/admin/userdetail/:user_id" element={<ProfileViewAdmin/>}/>
         <Route element={<DriverList/>} exact path="/admin/driverlist"/>
         <Route element={<Requests/>} exact path="/admin/Requests"/>
+        <Route path='/chat/' element={<ChatUser/>}/>
       </Routes>
     </Router>
     

@@ -20,6 +20,7 @@ import DriverProfile from './TripRequestDetailComponents/DriverProfile';
 import Accessdenied from './TripRequestDetailComponents/Animations/LoadingAnimation';
 import NotFound from './TripRequestDetailComponents/Animations/404NotFound';
 import AdminIcons from '../Admin/AdminDashboard/DashboardComponents/Animation/AdminIcons';
+import ChatButton from '../Chat/ChatButton';
 
 
 const TripRequestDetail = () => {
@@ -196,7 +197,7 @@ console.log(is590)
           </div>
 
           
-          <div className='bg-sky-900 w-full'>
+          <div className='bg-sky-900 w-full h-screen'>
           {!isAdmin ? (
             isDriver ? (
               <UserProfile TripRequest={tripRequest} />
@@ -204,7 +205,7 @@ console.log(is590)
               <DriverProfile TripRequest={tripRequest} />
             )
           ) : (
-            <div className='flex'>
+            <div className='flex '>
               <div className='bg-stone-100 pb-16 pt-4'>
                 <AdminIcons/>
               </div>
@@ -223,11 +224,11 @@ console.log(is590)
             <div className="bg-200 rounded-lg shadow-md mt-6  ">
               <HeaderImage />
             
-              <div className="grid grid-cols-3 gap-4 items-center justify-center mt-2 ml-4 mr-4 ">
+              <div className="grid grid-cols-3 gap-4 items-center justify-center mt-4 ml-4 mr-4  ">
                 <Detail
                   tripRequest={tripRequest}
                 />
-                <div className="col-span-3 text-center mb-2 flex">
+                <div className="col-span-3 text-center mb-4 flex">
                   {isDriver && tripRequest.status !== 'Confirmed' && tripRequest.initial_odometer === 'None' && !isAdmin && (
                     <AcceptRequest
                       trip_request_id={trip_request_id}
@@ -236,10 +237,17 @@ console.log(is590)
                   {!isDriver && !isAdmin && tripRequest.status === 'Pending' && tripRequest.status === 'Confirmed' && tripRequest.initial_odometer === 'None' && tripRequest.user.user_id === userId && (
                     <Withdraw />
                   )}
+                  {!isDriver && !isAdmin && tripRequest.status === 'Confirmed' && tripRequest.status === 'Confirmed' && tripRequest.initial_odometer === 'None' && tripRequest.user.user_id === userId && (
+                    <ChatButton driver_id={tripRequest.driver_id} user_id={userId}/>
+                  )}
                   {tripRequest.driver_id === userId && !isAdmin &&  tripRequest.status === 'Confirmed' && tripRequest.initial_odometer === 'None' && (
-                    <Repool
+                   <div>
+                   <Repool
                       trip_request_id={trip_request_id}
                     />
+                    <ChatButton user_id={tripRequest.user.user_id} driver_id={userId}/>
+                    </div>
+                    
                   )}
                   {isDriver && !isAdmin && tripRequest.status === 'Confirmed' && tripRequest.initial_odometer === 'None' && (
                     <button onClick={openStartTripModal}

@@ -40,6 +40,8 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import CarLeftToRight from '../User/HOME/Components/CarAnimations/CarLeftToRight';
+import { Chat, Notifications } from '@mui/icons-material';
+import { a } from 'react-spring';
 
 
 function Navbar() {
@@ -84,7 +86,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 w-full bg-[#d7dae2] py-1 px-4 h-13 mx-auto my-auto z-30">
+      <nav className="fixed top-0 w-full bg-[#d7dae2] py-1 px-4 h-13 mx-auto my-auto z-50">
       <CarLeftToRight/>
         <div className="mx-auto flex justify-between items-center">
         
@@ -94,12 +96,26 @@ function Navbar() {
           </div>
           <nav>
             <MobileViewNavbar />
-            <ul className="DESKTOP-MENU hidden space-x-8 lg:flex">
+            <ul className="DESKTOP-MENU z-50 hidden space-x-8 lg:flex">
               <li>
                 <h1>
                   <p>{greeting}</p>
                 </h1>
               </li>
+              {isAuthenticated && (
+                <a href="/chat">
+                <li className="cursor-pointer z-50" >
+                  <Chat/>
+                </li>
+                </a>
+              )}
+              {isAuthenticated && (
+                <a href="/chat">
+                <li className="cursor-pointer z-50" >
+                  <Notifications/>
+                </li>
+                </a>
+              )}
               <li className='z-50 cursor-pointer'>
               <a href={isDriver ? '/driver/home' : '/'}>
                   <FontAwesomeIcon icon="fa-solid fa-house" size="xl" />
