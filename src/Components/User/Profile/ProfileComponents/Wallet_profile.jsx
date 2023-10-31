@@ -54,16 +54,16 @@ function Wallet_profile() {
                   </div>
                   <div className=' flex flex-col items-end justify-end w-1/3 '>
                     <div className='mb-2'>
-                    <a href="#_" class="relative inline-flex items-center justify-start inline-block px-5 py-1 overflow-hidden font-medium transition-all bg-blue-600 rounded-full hover:bg-red-700 group">
+                    <a href="#_" class="relative inline-flex items-center justify-start  px-5 py-1 overflow-hidden font-medium transition-all bg-blue-600 rounded-full hover:bg-red-700 group">
                         <span class="absolute inset-0 border-0 group-hover:border-[25px] ease-linear duration-100 transition-all border-red-900 rounded-full"></span>
                         <span class="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white">Transactions</span>
                         </a>
                     </div>
                     <div>
                   
-                      <a href="#_" class="relative inline-flex items-center justify-start inline-block px-5 py-1 overflow-hidden font-medium transition-all bg-blue-600 rounded-full hover:bg-red-700 group">
+                      <a href="#_" class="relative inline-flex items-center justify-start  px-3 py-1  overflow-hidden font-medium transition-all bg-blue-600 rounded-full hover:bg-red-700 group">
                         <span class="absolute inset-0 border-0 group-hover:border-[25px] ease-linear duration-100 transition-all border-red-900 rounded-full"></span>
-                        <span class="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white">+ Money</span>
+                        <span class="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white">TransferMoney</span>
                         </a>
                     </div>
                   </div>

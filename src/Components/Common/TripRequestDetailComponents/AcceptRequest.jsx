@@ -4,15 +4,21 @@ import { selectUserData } from './../../Redux/authSlice';
 import React, { useEffect, useState } from 'react';
 import AxiosInstance from './../../CustomAxios/axiosInstance'; 
 import Swal from 'sweetalert2';
+import sendWebSocketMessage from './../../Notification/SendWebSocketFunction'
 
 
-function AcceptRequest( {trip_request_id}) {
+function AcceptRequest({ tripRequest, trip_request_id, userIdForChatroom }) {
     const axiosInstance = AxiosInstance();
     console.log("hiiii",trip_request_id)
-
+    console.log("hiiii trip req",userIdForChatroom)
     const userData = useSelector(selectUserData);
     const isDriver = userData.is_driver;
     const userId = userData.userId;
+    const [customerId, SetCustomerId] = useState(userIdForChatroom);
+    useEffect(()=>{
+    SetCustomerId(userIdForChatroom)
+    },[userIdForChatroom])
+    console.log("customerId",customerId);
     const handleAcceptRequest = () => {
         axiosInstance
           .post('driver/acceptrequest/', {

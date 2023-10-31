@@ -33,6 +33,7 @@ import Requests from './Components/Admin/Requests/Requests'
 import Pending from './Components/User/pending/Pending'
 import HistoryUser from './Components/User/History/HistoryUser'
 import ChatUser from './Components/Chat/ChatUser'
+import NotificationButton from './Components/Notification/NotificationButton'
 
 
 
@@ -97,6 +98,7 @@ function App() {
         <Route element={<DriverList/>} exact path="/admin/driverlist"/>
         <Route element={<Requests/>} exact path="/admin/Requests"/>
         <Route path='/chat/' element={<ChatUser/>}/>
+        <Route path='/notification/' element={<NotificationButton/>}/>
       </Routes>
     </Router>
     

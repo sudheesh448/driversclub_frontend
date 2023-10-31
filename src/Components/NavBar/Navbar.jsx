@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './../../assets/Static/drivers-club-logo-color-on-transparent-background.png';
 import Swal from 'sweetalert2';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -41,7 +41,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import CarLeftToRight from '../User/HOME/Components/CarAnimations/CarLeftToRight';
 import { Chat, Notifications } from '@mui/icons-material';
-import { a } from 'react-spring';
+
 
 
 function Navbar() {
@@ -53,7 +53,63 @@ function Navbar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const name = userData ? userData.first_name : '';
   const isDriver = userData.is_driver
+  const userId = userData.userId;
   const greeting = name ? `Hi ${name}` : 'Hi Guest';
+  const [socket, setSocket] = useState(null);
+  const [websocketMessages, setWebsocketMessages] = useState([]);
+
+  
+  useEffect(() => {
+    const roomName = `${userId}`;
+    console.log("room name----", roomName);
+    const newSocket = new WebSocket(`ws://127.0.0.1:8000/ws/notification/${roomName}/`);
+    setSocket(newSocket);
+    return () => {
+      if (newSocket) {
+        newSocket.close();
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (socket) {
+      socket.onopen = () => {
+        console.log("WebSocket connection opened notification");
+      };
+      socket.onmessage = (event) => {
+        console.log("messaage recived notification");
+        console.log("recieved",event.data)
+        const data = JSON.parse(event.data);
+        const message_get = data.message_content;
+        setWebsocketMessages((prevMessages) => [...prevMessages, data]);
+      };
+    }
+
+    
+  }, [socket]);
+
+  
+    useEffect(() => {
+      if (websocketMessages && websocketMessages.length > 0) {
+        try {
+          const lastMessage = websocketMessages[websocketMessages.length - 1];
+          const messageContent = lastMessage.message_content;
+  
+          Swal.fire({
+            title: messageContent,
+            icon: 'info',
+            showCloseButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Close',
+          });
+        } catch (error) {
+          // Handle the error, e.g., log it or display a message to the user
+          console.error('Error parsing WebSocket message:', error);
+        }
+      }
+    }, [websocketMessages]);
+
+
   const handleLogout = async () => {
     try {
       

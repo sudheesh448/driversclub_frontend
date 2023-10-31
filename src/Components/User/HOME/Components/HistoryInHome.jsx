@@ -12,8 +12,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectUserData } from './../../../Redux/authSlice';
 import bookmark from './../../../../assets/Static/Icons/bookmark.png';
-
-
+import sendWebSocketMessage from './../../../Notification/SendWebSocketFunction'
 function HistoryInHome() {
   const userData = useSelector(selectUserData);
   const { userId } = useMemo(() => userData, [userData]);
@@ -36,6 +35,9 @@ function HistoryInHome() {
         setHistoryData(response.data.tripRequests);
         setTotalPages(response.data.total_pages);
         setdriver(response.data.driver)
+        const roomName = '14'; // Replace with the actual room name
+        const messageContent = "Hello, this is a pre-defined message";
+        sendWebSocketMessage(roomName, messageContent);
       })
       .catch(error => {
         console.error('Error fetching history data:', error);
@@ -73,7 +75,7 @@ function HistoryInHome() {
     <div className='w-full'>
        <div className="flex w-full  bg-slate-600 text-gray-50">
         <img className="justify-center mt-0 py-0 w-9" src={bookmark} alt="" />
-        <p className="font-medium ">Payments pending</p>
+        <p className="font-medium mt-1">History Request</p>
       </div>
 <div className='h-auto'>
    <div className=''>
@@ -82,7 +84,7 @@ function HistoryInHome() {
           
             <div key={historyData.id}  onClick={() => {
               navigate(`/trip_request_detail/${historyData.id}`);
-            }} className="bg-sky-800  rounded-3xl border p-4  font-semibold grid grid-cols-5 gap-2 text-white cursor-pointer   hover:text-sky-950 font-semibold  hover:bg-orange-200"
+            }} className="bg-sky-800  rounded-3xl border p-4   grid grid-cols-5 gap-2 text-white cursor-pointer   hover:text-sky-950 font-semibold  hover:bg-orange-200"
             >
 
                 

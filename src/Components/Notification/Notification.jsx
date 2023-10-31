@@ -17,7 +17,7 @@ import Skeleton from 'react-loading-skeleton';
 
 
 
-const ChatUser = () => {
+const Notification = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const user_id = searchParams.get("user_id");
@@ -40,16 +40,11 @@ const ChatUser = () => {
   };
   let id_forname=""
 
-  
-  
-
-
-
 
   useEffect(() => {
-    const roomName = `${driver_id}_${userId}`;
+    const roomName = `${userIdred}`;
     console.log("room name----", roomName);
-    const newSocket = new WebSocket(`ws://127.0.0.1:8000/ws/chat/${roomName}/`);
+    const newSocket = new WebSocket(`ws://127.0.0.1:8000/ws/notification/${roomName}/`);
     setSocket(newSocket);
 
     return () => {
@@ -59,6 +54,7 @@ const ChatUser = () => {
     };
   }, []);
 
+
   useEffect(() => {
     if (socket) {
       socket.onopen = () => {
@@ -66,11 +62,10 @@ const ChatUser = () => {
       };
       socket.onmessage = (event) => {
         console.log("messaage recived");
+        console.log("recieved",event.data)
         const data = JSON.parse(event.data);
         const message_get = data.message_content;
-        console.log("sender",data.sender)
         setWebsocketMessages((prevMessages) => [...prevMessages, data]);
-       
       };
     }
 
@@ -85,7 +80,6 @@ const ChatUser = () => {
     }
   }, [socket]);
 
-  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -370,4 +364,4 @@ console.log("chat::::",userId,driver_id)
   );
 };
 
-export default ChatUser;
+export default Notification;

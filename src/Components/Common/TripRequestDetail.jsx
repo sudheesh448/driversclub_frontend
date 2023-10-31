@@ -21,17 +21,19 @@ import Accessdenied from './TripRequestDetailComponents/Animations/LoadingAnimat
 import NotFound from './TripRequestDetailComponents/Animations/404NotFound';
 import AdminIcons from '../Admin/AdminDashboard/DashboardComponents/Animation/AdminIcons';
 import ChatButton from '../Chat/ChatButton';
+import sendWebSocketMessage from './../Notification/SendWebSocketFunction'
 
 
 const TripRequestDetail = () => {
   const { trip_request_id } = useParams();
   const [tripRequest, setTripRequest] = useState(null);
   const axiosInstance = AxiosInstance();
-
+  const [isLoading, setIsLoading] = useState(true);
   const userData = useSelector(selectUserData);
   const isDriver = userData.is_driver;
   const isAdmin = userData.is_super;
   const userId = userData.userId;
+  const name = userData.name;
   console.log("userID", userId);
   const [isStartTripModalOpen, setStartTripModalOpen] = useState(false);
   const [isEndTripModalOpen, setEndTripModalOpen] = useState(false);
@@ -49,6 +51,7 @@ const TripRequestDetail = () => {
         console.log('Trip request details:', response.data);
         setTripRequest(response.data);
         console.log("trip req state:", tripRequest);
+        setIsLoading(false);
       })
       .catch((error) => {
         if (error.response && error.response.status === 590) {
@@ -62,6 +65,7 @@ const TripRequestDetail = () => {
   }, [trip_request_id]);
 
   console.log("trip id::", trip_request_id);
+  
 
 console.log(is590)
 
@@ -180,6 +184,62 @@ console.log(is590)
       });
   };
 
+
+  console.log("handle accept ::",tripRequest.user.user_id)
+  const handleAcceptRequest = () => {
+    
+     
+    
+    axiosInstance
+      .post('driver/acceptrequest/', {
+        is_driver: isDriver, 
+        user_id: userId,
+        trip_id: trip_request_id, 
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          
+          console.log('Request accepted successfully', response.data);
+          Swal.fire({
+            icon: 'success',
+            title: 'Request Accepted ',
+            text: 'You accepted this request.',
+          });
+          const roomName = tripRequest.user.user_id; // Replace with the actual room name
+          const messageContent = `Your trip Id: ${trip_request_id} is accepted by : ${name}`;
+          sendWebSocketMessage(roomName, messageContent);
+
+        }
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 599) {
+          Swal.fire({
+            icon: 'info',
+            title: 'Request Already Confirmed',
+            text: 'This request is already confirmed.',
+          });
+          console.log('This request is already confirmed');
+        } else if (error.response && error.response.status === 598) {
+          console.log('You cannot accept this request');
+          Swal.fire({
+            icon: 'error',
+            title: 'Cannot Accept Request',
+            text: 'You cannot accept this request.',
+          });
+        } else if (error.response && error.response.status === 597) {
+          console.log('You cannot accept this request');
+          Swal.fire({
+            icon: 'error',
+            title: 'Cannot Accept Request',
+            text: 'You already have booking on that day. Check your schedule',
+          });
+        }
+        else {
+          console.error('Error accepting request:', error);
+        }
+      });
+  };
+
   return (
     <>
       <Navbar />
@@ -229,10 +289,10 @@ console.log(is590)
                   tripRequest={tripRequest}
                 />
                 <div className="col-span-3 text-center mb-4 flex">
-                  {isDriver && tripRequest.status !== 'Confirmed' && tripRequest.initial_odometer === 'None' && !isAdmin && (
-                    <AcceptRequest
-                      trip_request_id={trip_request_id}
-                    />
+                  {  !isLoading && isDriver && tripRequest.status !== 'Confirmed' && tripRequest.initial_odometer === 'None' && !isAdmin && (
+                    <><button onClick={handleAcceptRequest} className="bg-green-700 text-white text-sm font-medium rounded-md px-2 py-1">
+                    Accept Request
+                  </button></>
                   )}
                   {!isDriver && !isAdmin && tripRequest.status === 'Pending' && tripRequest.status === 'Confirmed' && tripRequest.initial_odometer === 'None' && tripRequest.user.user_id === userId && (
                     <Withdraw />
