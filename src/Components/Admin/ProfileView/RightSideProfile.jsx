@@ -143,7 +143,7 @@ function RightSideProfile() {
       <>
           <div className=' pt-12 flex flex-col   bg-gradient-to-r from-stone-700 to-stone-400'>
           {/* Profile Image */}
-          <div className='w-56 mx-2 rounded-full overflow-hidden'>
+          <div className='w-48 mx-2 rounded-full overflow-hidden'>
             
   
   

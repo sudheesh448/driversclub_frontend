@@ -187,9 +187,6 @@ console.log(is590)
 
   console.log("handle accept ::",tripRequest.user.user_id)
   const handleAcceptRequest = () => {
-    
-     
-    
     axiosInstance
       .post('driver/acceptrequest/', {
         is_driver: isDriver, 

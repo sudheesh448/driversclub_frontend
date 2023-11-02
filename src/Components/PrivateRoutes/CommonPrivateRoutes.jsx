@@ -1,21 +1,20 @@
-// Import the necessary components
-
+import React from 'react'
 import { Outlet, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectUserData } from '../Redux/authSlice';
 
-// Define your ProtectedRoute component
-const CommonPrivateRoutes = () => {
+const CommonPrivateRoutes= () => {
     const userData = useSelector(selectUserData);
-    const { accessToken,isAuthenticated,is_driver } = userData;
+    const { accessToken,isAuthenticated,is_driver,is_super } = userData;
     
     
-    if (isAuthenticated ) {
+    if (isAuthenticated) {
       
       return <Outlet />;
     } else {
-      return <Navigate to="/user/signin" />;
+      // If the user is not authenticated, you can redirect them to the sign-in page.
+      return <Navigate to="/google" />;
     }
     }
 
-export default CommonPrivateRoutes;
+export default CommonPrivateRoutes

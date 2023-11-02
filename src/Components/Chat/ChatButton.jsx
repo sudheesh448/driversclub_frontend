@@ -11,9 +11,10 @@ function ChatButton({ user_id, driver_id }) {
 
     console.log("button:::",user_id,driver_id)
   return (
-    <div>
-         <button onClick={handleClick}>Click</button>
-    </div>
+    
+    <><button onClick={handleClick} className="bg-green-700 text-white text-sm font-medium rounded-md px-2 py-1">
+    Chat
+  </button></>
   )
 }
 

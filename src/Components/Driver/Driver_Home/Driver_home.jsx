@@ -9,7 +9,7 @@ import CalenderSchedule from './DriverComponents/CalenderSchedule';
 import HeaderWeb from './DriverComponents/HeaderWeb';
 import HeaderMobile from './DriverComponents/HeaderMobile';
 import Icons from './DriverComponents/Icons';
-import UpComing from './DriverComponents/UpComing';
+import UpComing from './../UpComing/UpComing';
 import AwaitingPayments from './DriverComponents/AwaitingPayments';
 
 function Driver_home() {
@@ -37,7 +37,7 @@ function Driver_home() {
               <div className='w-1/2'>
                 
                 <div className='mr-2 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-neutral-100 to-gray-200 '>
-                <UpComing />
+                <UpComing/>
                 </div>
                
                 <div className='bg-[radial_gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-neutral-100 to-gray-200 mt-2 mr-2'>

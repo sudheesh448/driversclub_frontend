@@ -35,9 +35,7 @@ function HistoryInHome() {
         setHistoryData(response.data.tripRequests);
         setTotalPages(response.data.total_pages);
         setdriver(response.data.driver)
-        const roomName = '14'; // Replace with the actual room name
-        const messageContent = "Hello, this is a pre-defined message";
-        sendWebSocketMessage(roomName, messageContent);
+        
       })
       .catch(error => {
         console.error('Error fetching history data:', error);
@@ -84,7 +82,7 @@ function HistoryInHome() {
           
             <div key={historyData.id}  onClick={() => {
               navigate(`/trip_request_detail/${historyData.id}`);
-            }} className="bg-sky-800  rounded-3xl border p-4   grid grid-cols-5 gap-2 text-white cursor-pointer   hover:text-sky-950 font-semibold  hover:bg-orange-200"
+            }} className="bg-sky-800 hidden md:grid  rounded-3xl border p-4   grid grid-cols-5 gap-2 text-white cursor-pointer   hover:text-sky-950 font-semibold  hover:bg-orange-200"
             >
 
                 
@@ -120,7 +118,7 @@ function HistoryInHome() {
     )}
    </div>
 </div>
-<div className="pagination mt-2 flex justify-center ">
+<div className="hidden md:flex pagination mt-2 flex justify-center ">
           <button
             onClick={() => changePage(currentPage - 1)}
             disabled={currentPage === 1}

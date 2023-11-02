@@ -99,9 +99,9 @@ function Profile_Left_sidedetails() {
 
   return (
     <>
-        <div className='w-1/5 pt-12 flex flex-col  bg-gradient-to-r from-stone-700 to-stone-400'>
+        <div className='md:w-1/5 pt-12 md:pt-0  md:h-screen items-center justify-center flex w-full md:flex md:flex-col  bg-gradient-to-r from-stone-700 to-stone-400'>
         {/* Profile Image */}
-        <div className='w-56 mx-2 rounded-full overflow-hidden'>
+        <div className='w-56 mx-2 items-center justify-center flex rounded-full overflow-hidden'>
           
 
 
@@ -117,7 +117,7 @@ function Profile_Left_sidedetails() {
         </div>
 
         {/* Profile Information */}
-        <div className='text-gray-200 p-4 text-center'>
+        <div className=' md:mr-0 text-gray-200 p-4 text-center'>
           <h2 className='text-2xl font-bold'>{userDetails.first_name}</h2>
           <p>Email: {userDetails.email}</p>
           <p>Phone: {userDetails.phone}</p>

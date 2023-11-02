@@ -44,10 +44,10 @@ function ChatList() {
   
   return (
     <div>
-        <div className="flex h-96 antialiased text-gray-800">
+        <div className="flex md:h-96 antialiased text-gray-800">
         
         <div className="flex flex-row  w-full overflow-x-hidden">
-          <div className="flex flex-col flex-auto  p-6">
+          <div className="flex flex-col flex-auto p-1 md:p-6">
             <div  className="  flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-gray-100 h-full p-4">
                 
               <div className="flex flex-col h-full overflow-x-auto mb-4">

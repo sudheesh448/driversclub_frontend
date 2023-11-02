@@ -7,10 +7,10 @@ import { selectUserData } from '../Redux/authSlice';
 // Define your ProtectedRoute component
 const PrivateRoutes = () => {
     const userData = useSelector(selectUserData);
-    const { accessToken,isAuthenticated,is_driver } = userData;
+    const { accessToken,isAuthenticated,is_driver,is_super } = userData;
     
     
-    if (isAuthenticated && !is_driver) {
+    if (isAuthenticated && !is_driver && !is_super) {
       
       return <Outlet />;
     } else {

@@ -33,15 +33,15 @@ function ProfileViewAdmin() {
     <div className=' flex w-full '>
         <div className=' w-1/12 bg-stone-200  '>
             <div className=' items-center justify-center pl-6  py-2'>
-                <AdminIcons/>
+            <AdminIcons/>
             </div>
         </div>
         <div className='w-11/12  flex'>
               <div className=' w-11/12 mt-2 mb-2'>
-                <History/>
+              <History/>
               </div>
               <div className='w-2/12 bg-gradient-to-r from-stone-700 to-stone-400'>
-              <RightSideProfile  />
+              <RightSideProfile/>
             </div>
         </div>
     </div>

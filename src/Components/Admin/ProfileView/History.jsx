@@ -7,7 +7,7 @@ import {
 library.add(
     faMagnifyingGlass,
   );
-  import AxiosInstance from './../../CustomAxios/axiosInstance'
+import AxiosInstance from './../../CustomAxios/axiosInstance'
 import { useNavigate, useParams } from 'react-router-dom';
 
 function History() {

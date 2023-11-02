@@ -102,15 +102,15 @@ function Car() {
     <>
       <Navbar/>
       <div className='md:block flex md:w-full h-full mt-12 '>
-        <div className='flex'>
+        <div className='md:flex'>
           {/* Left Image Section */}
           <Profile_Left_sidedetails/>
 
           {/* Right Section */}
           <div className='w-full mt-1 bg-stone-200'>
-            <div className='grid grid-cols-2'>
+            <div className='md:grid md:grid-cols-2'>
               
-            <div className='col-span-1  bg-sky-900  '>
+            <div className='md:col-span-1  bg-sky-900  '>
   <div className='flex justify-between'>
     <div className='flex items-center ml-4'>
       <img className='w-36' src={carhead} alt="" />
@@ -123,7 +123,7 @@ function Car() {
   
 </div>
               <div className='col-span-1 bg-stone-100 border border-sky-900'>
-                <div className='mt-1'>
+                <div className=' hidden md:block mt-1'>
                 <IconsMenu />
                 </div>
               </div>

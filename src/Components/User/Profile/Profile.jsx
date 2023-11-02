@@ -13,13 +13,13 @@ function Profile() {
   return (
     <>
       <Navbar />
-      <div className='md:block flex md:w-full h-full mt-12  '>
-        <div className='flex md:h-screen'>
+      <div className='md:flex md:w-full h-full mt-12  '>
+        <div className='md:flex w-full md:h-screen'>
           {/* Left Image Section */}
           <Profile_Left_sidedetails/>
 
           {/* Right Empty Section */}
-          <div className='w-full  grid grid-cols-2'>
+          <div className='w-full  md:grid md:grid-cols-2'>
             <div className='col-span-1'>
               <div className="m-2"> 
               <div className='bg-slate-300 mb-2'>

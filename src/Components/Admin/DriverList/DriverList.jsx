@@ -88,7 +88,7 @@ function DriverList() {
             users.map((user) => (
               <div key={user.id}  onClick={() => {
                 navigate(`/admin/userdetail/${user.id}`);
-              }} className="bg-sky-800 border p-4 font-semibold grid grid-cols-6 gap-2 text-white cursor-pointer   hover:text-sky-950 font-semibold  hover:bg-orange-200"
+              }} className="bg-sky-800 border p-4  grid grid-cols-6 gap-2 text-white cursor-pointer   hover:text-sky-950 font-semibold  hover:bg-orange-200"
               >
                 {/* Display the user's profile picture */}
                 {user.profile_pic ? (

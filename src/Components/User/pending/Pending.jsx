@@ -52,7 +52,7 @@ function Pending() {
     return (
       <> 
       <Navbar/>
-      <div className='w-full mt-12 flex md:h-screen'>
+      <div className='w-full mt-12  md:flex md:h-screen'>
           
           <Profile_Left_sidedetails/>
           <div className='w-full shadow-2xl p-4'>
@@ -68,9 +68,9 @@ function Pending() {
       confirmedRequests.map((trip) => (
         <div key={trip.id}  onClick={() => {
           navigate(`/trip_request_detail/${trip.id}`);
-        }} className="bg-sky-800 border p-4 font-semibold grid grid-cols-5 gap-2 text-white cursor-pointer transform transition-transform hover:scale-105  hover:text-black hover:bg-orange-200">
+        }} className="bg-sky-800 border p-4 font-semibold md:grid grid-cols-5 gap-2 text-white cursor-pointer transform transition-transform hover:scale-105  hover:text-black hover:bg-orange-200">
           
-          <div className='flex'>
+          <div className='hidden md:flex'>
             <img  className='w-8' src={postBox} alt="" />
           <p className='ml-2'>{trip.user_first_name}</p>
           </div>
@@ -78,7 +78,7 @@ function Pending() {
               <div>
               <p> {trip.from_location}</p>
               </div>
-              <div className='justify-center flex w-52'>
+              <div className='justify-center hidden md:flex w-52'>
               <img className='w-8' src={fromto} alt="" />
               </div>
           </div>

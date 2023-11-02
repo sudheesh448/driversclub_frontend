@@ -32,7 +32,7 @@ function CarDetails() {
   
   return (
     <>
-    <div className="grid grid-cols-2 gap-4">
+    <div className="md:grid grid-cols-2 gap-4">
       {cars.map((car) => (
         <div key={car.id} className="bg-sky-800 p-4 mx-4 my-4 flex shadow-2xl rounded-lg shadow-lg">
           <div className='w-1/2'>

@@ -9,6 +9,7 @@ import Icons from '../Driver_Home/DriverComponents/Icons';
 import CalendarSchedule from '../Driver_Home/DriverComponents/CalenderSchedule';
 import AwaitingPayments from '../Driver_Home/DriverComponents/AwaitingPayments';
 import Bio from './Driver_profile_components/Bio';
+import UpComing from '../UpComing/UpComing';
 
 function Driver_Profile() {
   
@@ -38,7 +39,12 @@ function Driver_Profile() {
                 </div>
                 
                 <div className='mt-2'>
+                  <div>
                   <Wallet_profile/>
+                  </div>
+                  <div className='mt-12 mb-4 pb-4 rounded-md'>
+                    <UpComing/>
+                  </div>
                 </div>
                 <div className='w-64 mt-2  ml-1 shadow-2xl '>
                     <AwaitingPayments/>
