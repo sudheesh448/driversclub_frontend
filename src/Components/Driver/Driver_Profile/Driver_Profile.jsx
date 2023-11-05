@@ -34,19 +34,21 @@ function Driver_Profile() {
                 </div>
               </div>
             <div className='w-full  flex'>
-                <div className=' w-1/3'>
+              
+                <div className=' w-1/3  bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-indigo-200 via-yellow-200 to-emerald-800'>
                 <CalendarSchedule/>
+              
                 </div>
                 
                 <div className='mt-2'>
                   <div>
                   <Wallet_profile/>
                   </div>
-                  <div className='mt-12 mb-4 pb-4 rounded-md'>
+                  <div className='mt-20 mb-4 pb-4 rounded-md'>
                     <UpComing/>
                   </div>
                 </div>
-                <div className='w-64 mt-2  ml-1 shadow-2xl '>
+                <div className=' mt-2  ml-1 shadow-2xl '>
                     <AwaitingPayments/>
                 </div>
               

@@ -1,3 +1,4 @@
+
 import React , { useRef, useState } from 'react'
 import Navbar from './../NavBar/Navbar';
 import logo from './../../assets/Static/drivers-club-logo-color-on-transparent-background.png';
@@ -9,18 +10,13 @@ import Swal from 'sweetalert2';
 import Modal from 'react-modal';
 import { BASE_IMAGE_URL } from '../Common/BaseUrl';
 
-const UserSignupform = () => {
+const ForgotPasswordUser = () => {
   const [ActiveOtpModalIsOpen, setActiveOtpModalIsOpen] = useState(false);
   const [otp, setOTP] = useState(['', '', '', '', '', '']);
   const otpFields = Array(6).fill(0);
   const otpInputRefs = otpFields.map(() => useRef(null));
   const [formData, setFormData] = useState({
-    first_name: '',
-    username: '',
     email: '',
-    phone: '',
-    password: '',
-    confirmPassword: '',
   });
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -63,7 +59,7 @@ const UserSignupform = () => {
     console.log('Form submitted with data:', formData);
   
     // Define the API endpoint URL
-    const apiUrl = `${BASE_IMAGE_URL}/api/register`;
+    const apiUrl = `${BASE_IMAGE_URL}/api/Forgot_password`;
   
     // Make an Axios POST request to the API
     axios.post(apiUrl, formData, {headers:{'Content-Type' : 'application/json'}, withCredentials : true })
@@ -135,6 +131,7 @@ const UserSignupform = () => {
     setActiveOtpModalIsOpen(true);
   };
 
+  // Function to close the modal
   const closeModal = () => {
     setActiveOtpModalIsOpen(false);
   };
@@ -142,25 +139,29 @@ const UserSignupform = () => {
   const handleOTPChange = (e, index) => {
     const value = e.target.value;
     if (/^\d+$/.test(value) || value === '') {
+      // Update the OTP digit at the specified index.
       const updatedOTP = [...otp];
       updatedOTP[index] = value;
       setOTP(updatedOTP);
   
+      // Move focus to the previous input field (if available) after deletion.
       if (value === '' && index > 0) {
         otpInputRefs[index  ].current.focus();
       } else if (index < 5 && value !== '') {
+        // Move focus to the next input field (if available) after entering a digit.
         otpInputRefs[index + 1].current.focus();
       }
     }
   };
 
   const handleVerifyOTP = () => {
+    // Combine the OTP digits and perform verification here.
     const combinedOTP = otp.join('');
     console.log('OTP is:', combinedOTP);
     console.log("username",formData.username)
 
 
-    const apiUrl = `${BASE_IMAGE_URL}/api/verify_user_registration_otp`;
+    const apiUrl = `${BASE_IMAGE_URL}/api/otp_verify_driver/`; // Replace with your backend API URL for OTP verification
 
     axios.post(apiUrl, { otp: combinedOTP,useremail:formData.email}, {headers:{'Content-Type' : 'application/json'}, withCredentials : true })
       .then((response) => {
@@ -186,6 +187,8 @@ const UserSignupform = () => {
       });
   };
 
+
+
   
 
 
@@ -193,34 +196,10 @@ const UserSignupform = () => {
     <> 
     <Navbar/>
     <div className="w-full max-w-sm mx-auto mt-20  p-6 border rounded-lg shadow-xl">
-      <h2 className="text-2xl font-semibold mb-4">Sign Up</h2>
+      <h2 className="text-2xl font-semibold mb-4">Forgot Password</h2>
       <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          
-          <input
-            type="text"
-            id="first_name"
-            placeholder='First Name'
-            name="first_name"
-            value={formData.firstName}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          
-          <input
-            type="text"
-            placeholder='username'
-            id="username"
-            name="username"
-            value={formData.lastName}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
-            required
-          />
-        </div>
+        
+        
         <div className="mb-4">
          
           <input
@@ -235,67 +214,22 @@ const UserSignupform = () => {
           />
         </div>
 
-        <div className="mb-4">
-          
-          <input
-            type="number"
-            placeholder='Mobile number'
-            id="phone"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            maxLength="10"
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          
-          <input
-            type="password"
-            placeholder='Password'
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          
-          <input
-            type="password"
-            placeholder='Confirm Password'
-            id="confirmPassword"
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
-            required
-          />
-        </div>
+    
         <div className="text-center">
           <button
             type="submit"
             className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg"
           >
-            Sign Up
+            Send OTP
           </button>
         </div>
       </form>
-      <div>
-        <h1 className='py-2'>Already have an account?? <span className='cursor-pointer text-sky-700 font-semibold' onClick={() => {
-              // Redirect to the sign-in page when the link is clicked
-              navigate('/user/signin');
-            }}>Sign in now</span></h1>
-      </div>
+      
     </div>
     <div  className='hidden md:block w-1/3 absolute bottom-0 right-0'>
   
   <img src={logo} alt="" />
    </div>
-
 
    <Modal
         isOpen={ActiveOtpModalIsOpen} // Control the visibility of the modal
@@ -338,4 +272,4 @@ const UserSignupform = () => {
   );
 };
 
-export default UserSignupform
+export default ForgotPasswordUser;

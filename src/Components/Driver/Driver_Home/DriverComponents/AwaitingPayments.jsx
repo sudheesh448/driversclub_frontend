@@ -70,7 +70,7 @@ function AwaitingPayments() {
 
   const currentPayment = pendingPayments[currentIndex] || {};
   return (
-    <div className=''>
+    <div className='w-full'>
         <div className=' flex w-full bg-slate-600 text-gray-50'>
             <img className='justify-center mt-0 py-0 w-9' src={bookmark} alt="" />
             <p className='font-medium '>Awaiting Payments</p>

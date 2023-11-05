@@ -37,6 +37,7 @@ import Banking from './Components/Admin/Banking/Banking'
 import AdminSigninPrivateRoute from './Components/PrivateRoutes/AdminSignInPrivateRoutes'
 import AdminPrivateRoutes from './Components/PrivateRoutes/AdminPrivateRoutes'
 import CommonPrivateRoutes from './Components/PrivateRoutes/CommonPrivateRoutes'
+import ForgotPasswordUser from './Components/Authentication/ForgotPasswordUser'
 
 
 
@@ -60,8 +61,9 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/trip_request_detail/:trip_request_id" element={<TripRequestDetail/>}/>
-        
-        
+        <Route exact path="/driver/otpverification" element={<DriverOTPVerification/>}/>
+        <Route exact path="/user/otpverification" element={<OTPVerification/>}/>
+        <Route exact path="/forgotpassword" element={<ForgotPasswordUser/>}/>
         
         
         {/* <Route path='/' element={<CommonPrivateRoutes/>}>
@@ -70,7 +72,7 @@ function App() {
         
 
         <Route path='/' element={<PrivateRoutes/>}>
-          <Route exact path="/user/otpverification" element={<OTPVerification/>}/>
+          
           <Route exact path="/user/profile" element={<Profile/>}/>
           <Route exact path="/user/car" element={<Car/>}/>
            <Route exact path="/"  element={<UserHome/>}/>
@@ -88,7 +90,7 @@ function App() {
         </Route>
 
         <Route path='/' element={<DriverSigninPrivateRoute/>}>
-          <Route exact path="/driver/otpverification" element={<DriverOTPVerification/>}/>
+          
           <Route exact path="/user/register" element={<UserSignupform/>}/>
           <Route exact path="/user/signin" element={<UserSigninForm/>}/>
           <Route exact path="/driver/register" element={<DriverSignupform/>}/>

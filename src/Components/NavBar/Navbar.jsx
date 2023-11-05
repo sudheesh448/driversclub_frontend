@@ -165,13 +165,7 @@ function Navbar() {
                 </li>
                 </a>
               )}
-              {isAuthenticated && (
-                <a href="/chat">
-                <li className="cursor-pointer z-50" >
-                  <Notifications/>
-                </li>
-                </a>
-              )}
+              
               <li className='z-50 cursor-pointer'>
               <a href={isDriver ? '/driver/home' : '/'}>
                   <FontAwesomeIcon icon="fa-solid fa-house" size="xl" />

@@ -21,7 +21,7 @@ import Accessdenied from './TripRequestDetailComponents/Animations/LoadingAnimat
 import NotFound from './TripRequestDetailComponents/Animations/404NotFound';
 import AdminIcons from '../Admin/AdminDashboard/DashboardComponents/Animation/AdminIcons';
 import ChatButton from '../Chat/ChatButton';
-import sendWebSocketMessage from './../Notification/SendWebSocketFunction'
+import sendWebSocketMessage from './../Notification/SendWebSocketFunction';
 
 
 const TripRequestDetail = () => {

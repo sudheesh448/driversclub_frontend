@@ -142,7 +142,7 @@ const DriverSigninForm = () => {
             Don't have an account?{' '}
             <span className="cursor-pointer text-sky-700 font-semibold"onClick={() => {
               // Redirect to the sign-in page when the link is clicked
-              navigate('/user/register');
+              navigate('/driver/register');
             }}>Sign up now</span>
           </h1>
         </div>
