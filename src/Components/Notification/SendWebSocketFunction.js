@@ -1,5 +1,5 @@
 function sendWebSocketMessage(roomName, messageContent) {
-    const socket = new WebSocket(`ws://127.0.0.1:8000/ws/notification/${roomName}/`);
+    const socket = new WebSocket(`wss://letstravel.shop/ws/notification/${roomName}/`);
   
     socket.onopen = () => {
       console.log("WebSocket connection opened sender");

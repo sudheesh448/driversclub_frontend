@@ -44,7 +44,7 @@ const Notification = () => {
   useEffect(() => {
     const roomName = `${userIdred}`;
     console.log("room name----", roomName);
-    const newSocket = new WebSocket(`ws://127.0.0.1:8000/ws/notification/${roomName}/`);
+    const newSocket = new WebSocket(`wss://letstravel.shop/ws/notification/${roomName}/`);
     setSocket(newSocket);
 
     return () => {

@@ -41,9 +41,9 @@ const ChatUser = () => {
   let id_forname=""
 
   useEffect(() => {
-    const roomName = `${driver_id}_${userIdred}`;
+    const roomName = `${driver_id}_${user_id}`;
     console.log("room name----", roomName);
-    const newSocket = new WebSocket(`ws://127.0.0.1:8000/ws/chat/${roomName}/`);
+    const newSocket = new WebSocket(`wss://letstravel.shop/ws/chat/${roomName}/`);
     setSocket(newSocket);
 
     return () => {
