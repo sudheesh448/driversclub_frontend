@@ -2,7 +2,7 @@ import React from 'react';
 import Footer from '../../Footer/Footer';
 import Navbar from '../../NavBar/Navbar';
 import Profile_Left_sidedetails from './../../User/Profile/ProfileComponents/Profile_Left_sidedetails';
-// import Wallet_profile from './../../User/Profile/ProfileComponents/Wallet_profile';
+import Wallet_profile from './../../User/Profile/ProfileComponents/Wallet_profile';
 import Wallet_PendingPayments from './../../User/Profile/ProfileComponents/Wallet_PendingPayments';
 import PendingPayments from './../../User/HOME/Components/PendingPayments'
 import Icons from '../Driver_Home/DriverComponents/Icons';
@@ -42,7 +42,7 @@ function Driver_Profile() {
                 
                 <div className='mt-2'>
                   <div>
-                  {/* <Wallet_profile/> */}
+                  <Wallet_profile/>
                   </div>
                   <div className='mt-20 mb-4 pb-4 rounded-md'>
                     <UpComing/>
