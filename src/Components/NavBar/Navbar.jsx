@@ -167,7 +167,7 @@ function Navbar() {
               )}
               
               <li className='z-50 cursor-pointer'>
-              <a href={isDriver ? '/driver/home' : '/'}>
+              <a href={isDriver ? '/driver/home' : (isSuper ? '/admin/home' : '/')}>
                   <FontAwesomeIcon icon="fa-solid fa-house" size="xl" />
                 </a>
               </li>
