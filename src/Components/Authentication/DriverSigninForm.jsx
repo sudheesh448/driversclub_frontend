@@ -52,7 +52,7 @@ const DriverSigninForm = () => {
         console.log('Authentication successful:', response.data);
         console.log('Authentication successful:', response.data.is_driver);
         
-        if (response.data.driver==true) {
+        if (response.data.driver==true && response.data.admin==false) {
         dispatch(
           login({
             userId: response.data.id,

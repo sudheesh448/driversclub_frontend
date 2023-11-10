@@ -23,7 +23,7 @@ const UserSigninForm = () => {
   
   
   const userData = useSelector(selectUserData);
-  const { accessToken,isAuthenticated,is_driver } = userData;
+  const { accessToken,isAuthenticated,is_driver, is_super } = userData;
   const axiosInstance = AxiosInstance();   
   console.log("Sign in page")
   console.log(userData)
@@ -51,7 +51,7 @@ const UserSigninForm = () => {
 
         
 
-        if (response.data.driver==false) {
+        if (response.data.driver==false && response.data.admin==false ) {
 
         dispatch(
           login({
