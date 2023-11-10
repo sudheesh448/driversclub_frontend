@@ -38,6 +38,7 @@ import AdminSigninPrivateRoute from './Components/PrivateRoutes/AdminSignInPriva
 import AdminPrivateRoutes from './Components/PrivateRoutes/AdminPrivateRoutes'
 import CommonPrivateRoutes from './Components/PrivateRoutes/CommonPrivateRoutes'
 import ForgotPasswordUser from './Components/Authentication/ForgotPasswordUser'
+import ForgotPasswordDriver from './Components/Authentication/ForgotPasswordDriver.jsx'
 
 
 
@@ -63,7 +64,8 @@ function App() {
         <Route exact path="/trip_request_detail/:trip_request_id" element={<TripRequestDetail/>}/>
         <Route exact path="/driver/otpverification" element={<DriverOTPVerification/>}/>
         <Route exact path="/user/otpverification" element={<OTPVerification/>}/>
-        <Route exact path="/forgotpassword" element={<ForgotPasswordUser/>}/>
+        <Route exact path="user/forgotpassword" element={<ForgotPasswordUser/>}/>
+        <Route exact path="driver/forgotpassword" element={<ForgotPasswordDriver/>}/>
         
         
         {/* <Route path='/' element={<CommonPrivateRoutes/>}>

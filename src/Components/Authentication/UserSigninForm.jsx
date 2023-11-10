@@ -24,7 +24,7 @@ const UserSigninForm = () => {
   
   const userData = useSelector(selectUserData);
   const { accessToken,isAuthenticated,is_driver } = userData;
-  const axiosInstance = AxiosInstance(accessToken);   
+  const axiosInstance = AxiosInstance();   
   console.log("Sign in page")
   console.log(userData)
  
@@ -143,6 +143,12 @@ const UserSigninForm = () => {
               // Redirect to the sign-in page when the link is clicked
               navigate('/user/register');
             }}>Sign up now</span>
+          </h1>
+          <h1 className="py-2">
+            <span className="cursor-pointer text-sky-700 font-semibold"onClick={() => {
+              // Redirect to the sign-in page when the link is clicked
+              navigate('/user/forgotpassword');
+            }}>Forgot Password</span>
           </h1>
         </div>
       </div>

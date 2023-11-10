@@ -145,6 +145,12 @@ const DriverSigninForm = () => {
               navigate('/driver/register');
             }}>Sign up now</span>
           </h1>
+          <h1 className="py-2">
+            <span className="cursor-pointer text-sky-700 font-semibold"onClick={() => {
+              // Redirect to the sign-in page when the link is clicked
+              navigate('/driver/forgotpassword');
+            }}>Forgot Password</span>
+          </h1>
         </div>
       </div>
       <div className="hidden md:block w-1/3 absolute bottom-0 right-0">

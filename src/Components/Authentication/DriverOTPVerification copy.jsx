@@ -38,7 +38,7 @@ const DriverOTPVerification = () => {
     console.log(' Driver OTP is:', combinedOTP);
 
     // Define the API endpoint URL for OTP verification
-    const apiUrl = 'http://127.0.0.1:8000/api/otp_verify_driver/'; // Replace with your backend API URL for OTP verification
+    const apiUrl = `${BASE_IMAGE_URL}/api/otp_verify_driver/`; // Replace with your backend API URL for OTP verification
 
     // Make a POST request to the backend to verify the OTP
     axios.post(apiUrl, { otp: combinedOTP }, {headers:{'Content-Type' : 'application/json'}, withCredentials : true })

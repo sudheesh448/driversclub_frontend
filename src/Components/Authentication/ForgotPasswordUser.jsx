@@ -12,6 +12,7 @@ import { BASE_IMAGE_URL } from '../Common/BaseUrl';
 
 const ForgotPasswordUser = () => {
   const [ActiveOtpModalIsOpen, setActiveOtpModalIsOpen] = useState(false);
+  const [PasswordResetModalIsOpen, setPasswordResetModalIsOpen]=useState(false);
   const [otp, setOTP] = useState(['', '', '', '', '', '']);
   const otpFields = Array(6).fill(0);
   const otpInputRefs = otpFields.map(() => useRef(null));
@@ -20,6 +21,8 @@ const ForgotPasswordUser = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,45 +35,19 @@ const ForgotPasswordUser = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  // Show the "Please wait" alert
-    showPleaseWaitAlert();
-
-    if (formData.password !== formData.confirmPassword) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Password Mismatch',
-        text: 'Passwords do not match. Please check your input.',
-      });
-      return; // Stop execution if passwords don't match
-    }
-
-    const { phone } = formData;
-
-    // Check if the phone number is a valid 10-digit number
-    if (!/^\d{10}$/.test(phone)) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Invalid Phone Number',
-        text: 'Please enter a valid 10-digit phone number.',
-      });
-      return; // Prevent form submission
-    }
-    // You can add your signup logic here, e.g., send the data to a server.
-    console.log('Form submitted with data:', formData);
-  
-    // Define the API endpoint URL
-    const apiUrl = `${BASE_IMAGE_URL}/api/Forgot_password`;
-  
+    console.log("email",formData.email)
+    const apiUrl = `${BASE_IMAGE_URL}/api/Forgot_password/`;
+    const email = formData.email
     // Make an Axios POST request to the API
-    axios.post(apiUrl, formData, {headers:{'Content-Type' : 'application/json'}, withCredentials : true })
+    axios.post(apiUrl, email, {headers:{'Content-Type' : 'application/json'}, withCredentials : true })
       .then((response) => {
         
         // Handle the successful response here
         console.log('Otp sent successfully:', response.data);
-        const email = formData.email;
+  
         closePleaseWaitAlert();
         showSuccessAlert(email);
-        
+        setActiveOtpModalIsOpen(true);
         // Navigate to the OTP verification page
         // navigate('/user/otpverification');
       })
@@ -78,10 +55,6 @@ const ForgotPasswordUser = () => {
         if (error.response.status === 469) {
           // Open the OTP verification modal
           console.log(error.response.data)
-  
-          setActiveOtpModalIsOpen(true);
-          
-          console.log("modal")
           
         }
         // Handle any errors here
@@ -93,8 +66,6 @@ const ForgotPasswordUser = () => {
         if (error.response && error.response.data && error.response.data.error) {
         errorMessage = error.response.data.error; // Use the custom error message from the response
         }
-
-        // showErrorAlert(errorMessage);
       });
   };
 
@@ -136,6 +107,15 @@ const ForgotPasswordUser = () => {
     setActiveOtpModalIsOpen(false);
   };
 
+  const openResetModal = () => {
+    setPasswordResetModalIsOpen(true);
+  };
+
+  // Function to close the modal
+  const closeResetModal = () => {
+    setPasswordResetModalIsOpen(false);
+  };
+
   const handleOTPChange = (e, index) => {
     const value = e.target.value;
     if (/^\d+$/.test(value) || value === '') {
@@ -161,21 +141,16 @@ const ForgotPasswordUser = () => {
     console.log("username",formData.username)
 
 
-    const apiUrl = `${BASE_IMAGE_URL}/api/otp_verify_driver/`; // Replace with your backend API URL for OTP verification
+    const apiUrl = `${BASE_IMAGE_URL}/api/otp_verify_forgotpassword/`; // Replace with your backend API URL for OTP verification
 
     axios.post(apiUrl, { otp: combinedOTP,useremail:formData.email}, {headers:{'Content-Type' : 'application/json'}, withCredentials : true })
       .then((response) => {
         
         console.log('OTP verification successful:', response.data);
-      
-        Swal.fire({
-          icon: 'success',
-          title: 'Success!',
-          text: 'Your account has been created and verified successfully. Please login to continue',
-        }).then(() => {
-  
-          navigate('/user/signin');
-        });
+          
+          closeModal() 
+          openResetModal();
+          navigate('/user/signin')
       })
       .catch((error) => {
         Swal.fire({
@@ -186,6 +161,46 @@ const ForgotPasswordUser = () => {
         console.error('OTP verification failed:', error);
       });
   };
+
+
+  const handleResetPassword = () => {
+    // Perform validation and handle resetting password logic here
+    if (newPassword !== confirmPassword) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Password Mismatch',
+        text: 'The entered passwords do not match.',
+      });
+      return;
+    }
+
+    // Call your API endpoint for resetting the password
+    const apiUrl = `${BASE_IMAGE_URL}/api/reset_password/`; // Update with your actual API endpoint
+    const resetData = {
+      useremail: formData.email,
+      newPassword: newPassword,
+      confirmPassword: confirmPassword,
+    };
+
+    axios.post(apiUrl, resetData, { headers: { 'Content-Type': 'application/json' }, withCredentials: true })
+      .then((response) => {
+        // Handle successful password reset response
+        console.log('Password reset successful:', response.data);
+        // Optionally, you can redirect the user to a login page or display a success message
+        
+        closeResetModal();
+      })
+      .catch((error) => {
+        // Handle password reset error
+        console.error('Password reset failed:', error);
+      });
+
+    // Close the password reset modal
+    
+  };
+
+ 
+
 
 
 
@@ -267,6 +282,47 @@ const ForgotPasswordUser = () => {
       </div>
       
       </Modal>
+
+
+      <Modal
+  isOpen={PasswordResetModalIsOpen}
+  onRequestClose={closeResetModal}
+  contentLabel="Password Reset Modal"
+  className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg rounded w-auto"
+>
+  <div className="w-full mx-auto p-6 border rounded-lg shadow-xl">
+    <h2 className="text-2xl text-center font-semibold mb-4">Reset Password</h2>
+    <p></p>
+    <div className="mb-4">
+      <input
+        type="password"
+        placeholder="New Password"
+        value={newPassword}
+        onChange={(e) => setNewPassword(e.target.value)}
+        className="w-full px-4 py-2 border rounded-lg text-center focus:outline-none focus:border-blue-400"
+        required
+      />
+    </div>
+    <div className="mb-4">
+      <input
+        type="password"
+        placeholder="Confirm New Password"
+        value={confirmPassword}
+        onChange={(e) => setConfirmPassword(e.target.value)}
+        className="w-full px-4 py-2 border rounded-lg text-center focus:outline-none focus:border-blue-400"
+        required
+      />
+    </div>
+    <div className="text-center">
+      <button
+        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg"
+        onClick={handleResetPassword}
+      >
+        Reset Password
+      </button>
+    </div>
+  </div>
+</Modal>
    
     </>
   );
