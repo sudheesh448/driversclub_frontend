@@ -55,7 +55,7 @@ function Navbar() {
   const isDriver = userData.is_driver;
   const is_super = userData.is_super;
   const userId = userData.userId;
-  const greeting = name ? `Hi ${name}` : 'Hi Guest';
+  const greeting = is_super ? 'Hi Admin' : name ? `Hi ${name}` : 'Hi Guest';
   const [socket, setSocket] = useState(null);
   const [websocketMessages, setWebsocketMessages] = useState([]);
 

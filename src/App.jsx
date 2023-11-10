@@ -56,10 +56,8 @@ function App() {
     localStorage.setItem("isAuthenticated", "false");
   }
 
-
   return (
     <>
-    
     <Router>
       <Routes>
         <Route exact path="/trip_request_detail/:trip_request_id" element={<TripRequestDetail/>}/>
@@ -71,9 +69,6 @@ function App() {
         
         {/* <Route path='/' element={<CommonPrivateRoutes/>}>
         </Route> */}
-
-        <Route exact path="/user/register" element={<UserSignupform/>}/>
-        <Route exact path="/user/signin" element={<UserSigninForm/>}/>
 
         
 
@@ -96,6 +91,8 @@ function App() {
         </Route>
 
         <Route path='/' element={<DriverSigninPrivateRoute/>}>
+          <Route exact path="/user/register" element={<UserSignupform/>}/>
+          <Route exact path="/user/signin" element={<UserSigninForm/>}/>
           <Route exact path="/driver/register" element={<DriverSignupform/>}/>
           <Route element={<DriverSigninForm/>} exact path="/driver/signin"/>
         </Route>
