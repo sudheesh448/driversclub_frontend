@@ -52,7 +52,8 @@ function Navbar() {
   const axiosInstance = AxiosInstance(accessToken);   
   const [isNavOpen, setIsNavOpen] = useState(false);
   const name = userData ? userData.first_name : '';
-  const isDriver = userData.is_driver
+  const isDriver = userData.is_driver;
+  const is_super = userData.is_super;
   const userId = userData.userId;
   const greeting = name ? `Hi ${name}` : 'Hi Guest';
   const [socket, setSocket] = useState(null);
@@ -167,7 +168,7 @@ function Navbar() {
               )}
               
               <li className='z-50 cursor-pointer'>
-              <a href={isDriver ? '/driver/home' : (isSuper ? '/admin/home' : '/')}>
+              <a href={isDriver ? '/driver/home' : (is_super ? '/admin/home' : '/')}>
                   <FontAwesomeIcon icon="fa-solid fa-house" size="xl" />
                 </a>
               </li>
