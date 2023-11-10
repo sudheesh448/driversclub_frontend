@@ -2,6 +2,7 @@ import React from 'react'
 import Lottie from 'lottie-react';
 import Navbar from '../NavBar/Navbar';
 import Footer from '../Footer/Footer';
+import notfound from '../../assets/Static/animations/404NotFound.json'
 
 function NotFound() {
   return (
