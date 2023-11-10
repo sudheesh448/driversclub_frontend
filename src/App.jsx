@@ -72,6 +72,9 @@ function App() {
         {/* <Route path='/' element={<CommonPrivateRoutes/>}>
         </Route> */}
 
+        <Route exact path="/user/register" element={<UserSignupform/>}/>
+        <Route exact path="/user/signin" element={<UserSigninForm/>}/>
+
         
 
         <Route path='/' element={<PrivateRoutes/>}>
@@ -93,9 +96,6 @@ function App() {
         </Route>
 
         <Route path='/' element={<DriverSigninPrivateRoute/>}>
-          
-          <Route exact path="/user/register" element={<UserSignupform/>}/>
-          <Route exact path="/user/signin" element={<UserSigninForm/>}/>
           <Route exact path="/driver/register" element={<DriverSignupform/>}/>
           <Route element={<DriverSigninForm/>} exact path="/driver/signin"/>
         </Route>

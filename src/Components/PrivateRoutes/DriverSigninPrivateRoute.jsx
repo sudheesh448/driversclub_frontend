@@ -7,7 +7,7 @@ import { selectUserData } from '../Redux/authSlice';
 
 const DriverSigninPrivateRoute = () => {
   const userData = useSelector(selectUserData);
-  const { isAuthenticated, is_driver } = userData;
+  const { isAuthenticated, is_driver,is_super } = userData;
 
   console.log("DriverSigninPrivateRoute:", isAuthenticated, is_driver);
 
@@ -18,9 +18,13 @@ const DriverSigninPrivateRoute = () => {
     if (is_driver){
         return <Navigate to="/driver/home" />;
     }
-    else if (!is_driver){
+    else if (!is_driver && !is_super){
         return <Navigate to="/" />;
     }
+    else if (!is_driver && is_super){
+      return <Navigate to="/admin/home" />;
+  }
+
   }
 };
 export default DriverSigninPrivateRoute;
