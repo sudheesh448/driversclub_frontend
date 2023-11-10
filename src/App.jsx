@@ -39,6 +39,7 @@ import AdminPrivateRoutes from './Components/PrivateRoutes/AdminPrivateRoutes'
 import CommonPrivateRoutes from './Components/PrivateRoutes/CommonPrivateRoutes'
 import ForgotPasswordUser from './Components/Authentication/ForgotPasswordUser'
 import ForgotPasswordDriver from './Components/Authentication/ForgotPasswordDriver.jsx'
+import NotFound from './Components/Common/NotFound.jsx'
 
 
 
@@ -116,6 +117,7 @@ function App() {
         
         <Route path='/chat/' element={<ChatUser/>}/>
         <Route path='/notification/' element={<NotificationButton/>}/>
+        <Route path='*' element={<NotFound/>} />
         
       </Routes>
     </Router>
