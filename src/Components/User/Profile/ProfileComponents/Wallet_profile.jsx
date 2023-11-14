@@ -21,7 +21,7 @@ function Wallet_profile() {
     accountNumber: '',
     accountHolderName: '',
     amount: '',
-    userId:'23',
+    userId:userId,
   });
 
   useEffect(() => {
