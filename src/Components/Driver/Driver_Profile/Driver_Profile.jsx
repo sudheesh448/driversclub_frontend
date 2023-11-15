@@ -56,7 +56,7 @@ function Driver_Profile() {
           </div>
         </div>
       </div>
-      <div className='w-full h-full mt-12 '>
+      <div className='md:hidden w-full h-full mt-12 '>
 
       <Profile_Left_sidedetails/>
       <Bio/>
