@@ -54,7 +54,7 @@ function RequestHistory() {
     return (
       <> 
       <Navbar/>
-      <div className='w-full mt-12 flex'>
+      <div className='w-full mt-12 hidden md:flex'>
           <div className='w-1/4 mr-2'>
             <div className='h-28 w-full mb-2 bg-slate-100'>
             <Icons/>
@@ -126,6 +126,13 @@ function RequestHistory() {
             </button>
             </div>
           </div>
+        </div>
+
+        <div className='flex md:hidden'>
+        <div className='h-28 w-full mb-2 bg-slate-100'>
+            <Icons/>
+            </div>
+
         </div>
         <Footer />
       </>
