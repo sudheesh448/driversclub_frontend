@@ -39,12 +39,84 @@ library.add(
 
 function MobileViewNavbar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const navigate = useNavigate();
+  const Navigate = useNavigate();
   const dispatch = useDispatch();
   const userData = useSelector(selectUserData);
+  const { accessToken,isAuthenticated,is_driver,refreshToken } = userData;
+  const axiosInstance = AxiosInstance(accessToken);   
+  const name = userData ? userData.first_name : '';
   const isDriver = userData.is_driver;
   const is_super = userData.is_super;
   const userId = userData.userId;
+  const greeting = is_super ? 'Hi Admin' : name ? `Hi ${name}` : 'Hi Guest';
+  const [socket, setSocket] = useState(null);
+  const [websocketMessages, setWebsocketMessages] = useState([]);
+
+  const navigateToProfile = () => {
+    if (!isProfilePage) {
+      Navigate('/user/profile');
+    }
+  };
+
+const navigateToCar = () => {
+    if(!isCarPage){
+      Navigate('/user/car')
+    }
+  }
+
+  const navigateToConfirmed = () => {
+    if(!isConfirmPage){
+      Navigate('/user/confirmed')
+    }
+  }
+  
+  const navigateToPending = () => {
+    if(!isPendingPage){
+      Navigate('/user/pending')
+    }
+  }
+  const navigateToHistory = () => {
+    if(!isHistoryPage){
+      Navigate('/user/history')
+    }
+  }
+  const navigateToChat = () => {
+    if(!isChatPage){
+      Navigate('/chat')
+    }
+  }
+
+  const handleLogout = async () => {
+    try {
+      
+      const response = await axiosInstance.post('/logout/', {
+           refresh_token: refreshToken,
+        });
+     
+      dispatch(logout());
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Lougout successfull',
+        text: 'Thank you for use our services',
+        confirmButtonText: 'OK',
+      });
+
+      Navigate('/user/signin');
+    } catch (error) {
+      console.error('Logout error:', error);
+
+      Swal.fire({
+        icon: 'warning',
+        title: 'Something went wrong !!',
+        text: 'Try again',
+        confirmButtonText: 'OK',
+      });
+      
+    }
+  };
+
+
   return (
     <>
       <section className="md:hidden">
@@ -65,7 +137,7 @@ function MobileViewNavbar() {
           className={`absolute ${isNavOpen ? 'block' : 'hidden'} rounded-sm w-2/5 opacity-90 h-auto bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-indigo-200 via-sky-200 to-gray-100 flex flex-col items-start pt-4 top-16 right-4`}
         >
           <ul className="flex flex-col items-start">
-            <li className="mt-4 ml-2 flex items-center">
+            <li className=" mt-4 ml-2 flex items-center cursor-pointer">
             <a href={isDriver ? '/driver/home' : (is_super ? '/admin/home' : '/')}>
               <FontAwesomeIcon icon={faHouse} size="xl" className="mr-4" />
               <label className="font-semibold" htmlFor="">
@@ -73,29 +145,29 @@ function MobileViewNavbar() {
               </label>
               </a>
             </li>
-            <li className="mt-4 ml-2 flex items-center">
+            <li onClick={navigateToProfile} className="mt-4 ml-2 flex items-center cursor-pointer">
               <FontAwesomeIcon icon={faUser} size="xl" className="mr-4" />
               <label htmlFor="" className="font-semibold">
                 PROFILE
               </label>
             </li>
-            <li className="mt-4 ml-2 flex items-center">
+            <li onClick={navigateToConfirmed} className="mt-4 ml-2 flex items-center cursor-pointer">
               <FontAwesomeIcon
                 icon={faCircleCheck}
                 size="xl"
                 className="mr-4"
               />
-              <label htmlFor="" className="font-semibold">
+              <label htmlFor="" className="font-semibold cursor-pointer">
                 CONFIRMED
               </label>
             </li>
-            <li className="mt-4 ml-2 flex items-center">
+            <li onClick={navigateToPending} className="mt-4 ml-2 flex items-center cursor-pointer">
               <FontAwesomeIcon icon={faClock} size="xl" className="mr-4" />
               <label htmlFor="" className="font-semibold">
                 PENDING
               </label>
             </li>
-            <li className="mt-4 ml-2 flex items-center">
+            <li onClick={navigateToHistory} className="mt-4 ml-2 flex items-center cursor-pointer">
               <FontAwesomeIcon
                 icon={faFolderOpen}
                 size="xl"
@@ -105,19 +177,19 @@ function MobileViewNavbar() {
                 HISTORY
               </label>
             </li>
-            <li className="mt-2 ml-2 flex items-center">
+            <li onClick={navigateToChat} className="mt-2 ml-2 flex items-center cursor-pointer">
               <FontAwesomeIcon icon={faStar} size="xl" className="mr-4" />
               <label htmlFor="" className="font-semibold">
-                FAVORITE
+                CHATS
               </label>
             </li>
-            <li className="mt-4 ml-2 flex items-center">
+            <li onClick={navigateToCar} className="mt-4 ml-2 flex items-center cursor-pointer">
               <FontAwesomeIcon icon={faCar} size="xl" className="mr-4" />
               <label htmlFor="" className="font-semibold">
                 CARS
               </label>
             </li>
-            <li className="mt-4 ml-2 mb-5 flex items-center">
+            <li onClick={handleLogout} className="mt-4 ml-2 mb-5 flex items-center cursor-pointer">
               <FontAwesomeIcon
                 icon={faRightFromBracket}
                 size="xl"
