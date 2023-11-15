@@ -58,6 +58,11 @@ function MobileViewNavbar() {
   const isPendingPage = location.pathname === '/user/pending';
   const isHistoryPage = location.pathname === '/user/history'
   const isChatPage = location.pathname === '/chat'
+  const isDriverProfilePage = location.pathname === '/driver/profile';
+const isPRequestpoolPage = location.pathname === '/driver/requestpool';
+const isConfirmedRequestPage = location.pathname === '/driver/confirmedrequests';
+  const isDriverHistoryPage = location.pathname === '/driver/trip_history'
+
   console.log(location)
 
   const navigateToProfile = () => {
@@ -126,7 +131,7 @@ const navigateToCar = () => {
 
 
   const navigateToProfileDriver = () => {
-    if (!isProfilePage) {
+    if (!isDriverProfilePage) {
       Navigate('/driver/profile');
     }
   };
@@ -143,7 +148,7 @@ const navigateToCar = () => {
   }
   
   const navigateToHistoryDriver = () => {
-    if (!isHistoryPage) {
+    if (!isDriverHistoryPage) {
       Navigate('/driver/trip_history');
     }
   }
