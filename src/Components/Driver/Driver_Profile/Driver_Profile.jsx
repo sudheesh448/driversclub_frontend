@@ -60,7 +60,7 @@ function Driver_Profile() {
       <div className=' bg-white shadow-xl '>
                <Icons/>
         </div>
-      
+      <Profile_Left_sidedetails/>
       <Bio/>
       <CalendarSchedule/>
       <Wallet_profile/>
