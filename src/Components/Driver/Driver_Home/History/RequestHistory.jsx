@@ -136,9 +136,9 @@ function RequestHistory() {
   
   <div className=" mt-2  flex w-full bg-slate-600">
   <div className='flex'>
-  
-  <p className="text-2xl font-semibold mb-4 text-white">Trip History</p>
-  </div>
+          <img className="justify-center mt-0 py-0 w-9" src={bookmark} alt="" />
+          <p className="text-2xl font-semibold mb-4 text-white">Trip History</p>
+          </div>
 </div>
     <div className="shadow-xl">
 {confirmedRequests.length > 0 ? (
@@ -151,7 +151,7 @@ confirmedRequests.map((trip) => (
     
   <p className='ml-2'>{trip.user_first_name}</p>
   </div>
-  <div className='grid grid-cols-5'>
+  <div className='grid '>
       <div>
       <p> {trip.from_location}</p>
       </div>
