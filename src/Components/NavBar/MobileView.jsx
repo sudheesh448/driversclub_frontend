@@ -239,7 +239,7 @@ const navigateToCar = () => {
             <li onClick={navigateToPending} className="mt-4 ml-2 flex items-center cursor-pointer">
               <FontAwesomeIcon icon={faClock} size="xl" className="mr-4" />
               <label htmlFor="" className="font-semibold cursor-pointer">
-                PENDING
+                REQUEST POOL
               </label>
             </li>
             <li onClick={navigateToHistory} className="mt-4 ml-2 flex items-center cursor-pointer">
@@ -258,14 +258,6 @@ const navigateToCar = () => {
                 CHATS
               </label>
             </li>
-            <li onClick={navigateToCar} className="mt-4 ml-2 flex items-center cursor-pointer">
-              <FontAwesomeIcon icon={faCar} size="xl" className="mr-4" />
-              <label htmlFor="" className="font-semibold cursor-pointer">
-                CARS
-              </label>
-            </li>
-
-
 
             <li onClick={handleLogout} className="mt-4 ml-2 mb-5 flex items-center cursor-pointer">
               <FontAwesomeIcon
