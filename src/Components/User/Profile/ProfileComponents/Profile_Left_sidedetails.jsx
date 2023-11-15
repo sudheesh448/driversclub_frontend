@@ -111,7 +111,7 @@ function Profile_Left_sidedetails() {
                   ? URL.createObjectURL(userDetails.profile_img)
                   : `${BASE_IMAGE_URL}${userDetails.profile_img}` 
                 : ''}
-              className="w-32 h-32 rounded-full mx-auto mb-4"
+              className="md:w-32 md:h-32 rounded-full mx-auto mb-4"
           />
 
         </div>
