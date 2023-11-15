@@ -213,7 +213,7 @@ const navigateToCar = () => {
             </li>
             </ul>)}
 
-            {userId && (
+            {!userId && (
             <ul>
             <li className="mt-2 ml-2 flex items-center cursor-pointer">
               <a href="/user/signin">
