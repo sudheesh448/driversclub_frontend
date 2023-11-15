@@ -155,9 +155,12 @@ const navigateToCar = () => {
               </a>
             </li>
             </ul>)}
+
+
             {userId ? (
-              <ul className="flex flex-col items-start"> 
-            <li onClick={navigateToProfile} className="mt-4 ml-2 flex items-center cursor-pointer">
+            is_super ? (
+              <ul className="flex flex-col items-start">
+                <li onClick={navigateToProfile} className="mt-4 ml-2 flex items-center cursor-pointer">
               <FontAwesomeIcon icon={faUser} size="xl" className="mr-4" />
               <label htmlFor="" className="font-semibold cursor-pointer">
                 PROFILE
@@ -214,10 +217,131 @@ const navigateToCar = () => {
                 LOG OUT
               </label>
             </li>
-            </ul>
+              </ul>
+            ) : isDriver ? (
+              <ul className="flex flex-col items-start">
+                <li onClick={navigateToProfile} className="mt-4 ml-2 flex items-center cursor-pointer">
+              <FontAwesomeIcon icon={faUser} size="xl" className="mr-4" />
+              <label htmlFor="" className="font-semibold cursor-pointer">
+                PROFILE
+              </label>
+            </li>
+            <li onClick={navigateToConfirmed} className="mt-4 ml-2 flex items-center cursor-pointer">
+              <FontAwesomeIcon
+                icon={faCircleCheck}
+                size="xl"
+                className="mr-4"
+              />
+              <label htmlFor="" className="font-semibold cursor-pointer">
+                CONFIRMED
+              </label>
+            </li>
+            <li onClick={navigateToPending} className="mt-4 ml-2 flex items-center cursor-pointer">
+              <FontAwesomeIcon icon={faClock} size="xl" className="mr-4" />
+              <label htmlFor="" className="font-semibold cursor-pointer">
+                PENDING
+              </label>
+            </li>
+            <li onClick={navigateToHistory} className="mt-4 ml-2 flex items-center cursor-pointer">
+              <FontAwesomeIcon
+                icon={faFolderOpen}
+                size="xl"
+                className="mr-4"
+              />
+              <label htmlFor="" className="font-semibold cursor-pointer">
+                HISTORY
+              </label>
+            </li>
+            <li onClick={navigateToChat} className="mt-2 ml-2 flex items-center cursor-pointer">
+              <FontAwesomeIcon icon={faStar} size="xl" className="mr-4" />
+              <label htmlFor="" className="font-semibold cursor-pointer">
+                CHATS
+              </label>
+            </li>
+            <li onClick={navigateToCar} className="mt-4 ml-2 flex items-center cursor-pointer">
+              <FontAwesomeIcon icon={faCar} size="xl" className="mr-4" />
+              <label htmlFor="" className="font-semibold cursor-pointer">
+                CARS
+              </label>
+            </li>
+
+
+
+            <li onClick={handleLogout} className="mt-4 ml-2 mb-5 flex items-center cursor-pointer">
+              <FontAwesomeIcon
+                icon={faRightFromBracket}
+                size="xl"
+                className="mr-4"
+              />
+              <label htmlFor="" className="font-semibold cursor-pointer">
+                LOG OUT
+              </label>
+            </li>
+              </ul>
             ) : (
+              <ul className="flex flex-col items-start">
+                <li onClick={navigateToProfile} className="mt-4 ml-2 flex items-center cursor-pointer">
+              <FontAwesomeIcon icon={faUser} size="xl" className="mr-4" />
+              <label htmlFor="" className="font-semibold cursor-pointer">
+                PROFILE
+              </label>
+            </li>
+            <li onClick={navigateToConfirmed} className="mt-4 ml-2 flex items-center cursor-pointer">
+              <FontAwesomeIcon
+                icon={faCircleCheck}
+                size="xl"
+                className="mr-4"
+              />
+              <label htmlFor="" className="font-semibold cursor-pointer">
+                CONFIRMED
+              </label>
+            </li>
+            <li onClick={navigateToPending} className="mt-4 ml-2 flex items-center cursor-pointer">
+              <FontAwesomeIcon icon={faClock} size="xl" className="mr-4" />
+              <label htmlFor="" className="font-semibold cursor-pointer">
+                PENDING
+              </label>
+            </li>
+            <li onClick={navigateToHistory} className="mt-4 ml-2 flex items-center cursor-pointer">
+              <FontAwesomeIcon
+                icon={faFolderOpen}
+                size="xl"
+                className="mr-4"
+              />
+              <label htmlFor="" className="font-semibold cursor-pointer">
+                HISTORY
+              </label>
+            </li>
+            <li onClick={navigateToChat} className="mt-2 ml-2 flex items-center cursor-pointer">
+              <FontAwesomeIcon icon={faStar} size="xl" className="mr-4" />
+              <label htmlFor="" className="font-semibold cursor-pointer">
+                CHATS
+              </label>
+            </li>
+            <li onClick={navigateToCar} className="mt-4 ml-2 flex items-center cursor-pointer">
+              <FontAwesomeIcon icon={faCar} size="xl" className="mr-4" />
+              <label htmlFor="" className="font-semibold cursor-pointer">
+                CARS
+              </label>
+            </li>
+
+
+
+            <li onClick={handleLogout} className="mt-4 ml-2 mb-5 flex items-center cursor-pointer">
+              <FontAwesomeIcon
+                icon={faRightFromBracket}
+                size="xl"
+                className="mr-4"
+              />
+              <label htmlFor="" className="font-semibold cursor-pointer">
+                LOG OUT
+              </label>
+            </li>
+              </ul>
+            )
+          ) : (
             <ul>
-            <li className="mt-2 ml-2 flex items-center cursor-pointer">
+              <li className="mt-2 ml-2 flex items-center cursor-pointer">
               <a href="/user/signin">
             <FontAwesomeIcon icon=" cursor-pointer fa-solid fa-arrow-right-to-bracket" size="xl" />
               <label className=" cursor-pointer font-semibold mx-3" htmlFor="">
@@ -241,8 +365,8 @@ const navigateToCar = () => {
               </label>
               </a>
             </li>
-          </ul>
-            )}
+            </ul>
+          )}
         </div>
         {/* Drop-down menu ends */}
       </section>
