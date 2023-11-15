@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import CarLeftToRight from '../User/HOME/Components/CarAnimations/CarLeftToRight';
 import { Chat, Notifications } from '@mui/icons-material';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
   faXmark,
   faBars,
@@ -51,6 +52,14 @@ function MobileViewNavbar() {
   const greeting = is_super ? 'Hi Admin' : name ? `Hi ${name}` : 'Hi Guest';
   const [socket, setSocket] = useState(null);
   const [websocketMessages, setWebsocketMessages] = useState([]);
+  const location = useLocation();
+  const isProfilePage = location.pathname === '/user/profile';
+  const isCarPage = location.pathname === '/user/car';
+  const isConfirmPage = location.pathname === '/user/confirmed';
+  const isPendingPage = location.pathname === '/user/pending';
+  const isHistoryPage = location.pathname === '/user/history'
+  const isChatPage = location.pathname === '/chat'
+  console.log(location)
 
   const navigateToProfile = () => {
     if (!isProfilePage) {
