@@ -57,7 +57,9 @@ function Driver_Profile() {
         </div>
       </div>
       <div className='md:hidden w-full h-full mt-12 '>
-
+      <div className=' bg-white shadow-xl py-2 '>
+               <Icons/>
+        </div>
       <Profile_Left_sidedetails/>
       <Bio/>
       <CalendarSchedule/>
