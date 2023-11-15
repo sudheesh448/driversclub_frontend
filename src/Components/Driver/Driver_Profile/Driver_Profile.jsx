@@ -16,7 +16,7 @@ function Driver_Profile() {
   return (
     <>
      <Navbar />
-      <div className='hidden  md:block flex md:w-full h-full mt-12 '>
+      <div className='hidden  md:block  md:w-full h-full mt-12 '>
         <div className='flex'>
           {/* Left Image Section */}
           <Profile_Left_sidedetails/>
@@ -55,6 +55,11 @@ function Driver_Profile() {
             </div>
           </div>
         </div>
+      </div>
+      <div className='w-full h-full mt-12 '>
+
+      <Profile_Left_sidedetails/>
+
       </div>
 
       <Footer />
