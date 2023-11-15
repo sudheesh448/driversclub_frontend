@@ -148,14 +148,14 @@ const navigateToCar = () => {
             <li className=" mt-4 ml-2 flex items-center cursor-pointer">
             <a href={isDriver ? '/driver/home' : (is_super ? '/admin/home' : '/')}>
               <FontAwesomeIcon icon={faHouse} size="xl" className="mr-4" />
-              <label className="font-semibold" htmlFor="">
+              <label className="font-semibold cursor-pointer" htmlFor="">
                 HOME
               </label>
               </a>
             </li>
             <li onClick={navigateToProfile} className="mt-4 ml-2 flex items-center cursor-pointer">
               <FontAwesomeIcon icon={faUser} size="xl" className="mr-4" />
-              <label htmlFor="" className="font-semibold">
+              <label htmlFor="" className="font-semibold cursor-pointer">
                 PROFILE
               </label>
             </li>
@@ -171,7 +171,7 @@ const navigateToCar = () => {
             </li>
             <li onClick={navigateToPending} className="mt-4 ml-2 flex items-center cursor-pointer">
               <FontAwesomeIcon icon={faClock} size="xl" className="mr-4" />
-              <label htmlFor="" className="font-semibold">
+              <label htmlFor="" className="font-semibold cursor-pointer">
                 PENDING
               </label>
             </li>
@@ -181,19 +181,19 @@ const navigateToCar = () => {
                 size="xl"
                 className="mr-4"
               />
-              <label htmlFor="" className="font-semibold">
+              <label htmlFor="" className="font-semibold cursor-pointer">
                 HISTORY
               </label>
             </li>
             <li onClick={navigateToChat} className="mt-2 ml-2 flex items-center cursor-pointer">
               <FontAwesomeIcon icon={faStar} size="xl" className="mr-4" />
-              <label htmlFor="" className="font-semibold">
+              <label htmlFor="" className="font-semibold cursor-pointer">
                 CHATS
               </label>
             </li>
             <li onClick={navigateToCar} className="mt-4 ml-2 flex items-center cursor-pointer">
               <FontAwesomeIcon icon={faCar} size="xl" className="mr-4" />
-              <label htmlFor="" className="font-semibold">
+              <label htmlFor="" className="font-semibold cursor-pointer">
                 CARS
               </label>
             </li>
@@ -206,7 +206,7 @@ const navigateToCar = () => {
                 size="xl"
                 className="mr-4"
               />
-              <label htmlFor="" className="font-semibold">
+              <label htmlFor="" className="font-semibold cursor-pointer">
                 LOG OUT
               </label>
             </li>
