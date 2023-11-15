@@ -152,7 +152,7 @@ function RequestPool() {
         <div className=" mt-4 mr-4 flex w-full bg-slate-600">
         <div className='flex'>
         <img className="justify-center mt-0 py-0 w-9" src={bookmark} alt="" />
-        <p className="text-2xl font-semibold mb-4 text-white">Pending Trip Requests</p>
+        <p className="text-2xl font-semibold mb-4 text-white">Request Pool</p>
         </div>
       </div>
           <div className="shadow-xl">
@@ -160,7 +160,7 @@ function RequestPool() {
     pendingRequests.map((trip) => (
       <div key={trip.id}  onClick={() => {
         navigate(`/trip_request_detail/${trip.id}`);
-      }} className="bg-sky-800 border p-4 font-semibold grid grid-cols-5 gap-2 text-white cursor-pointer transform transition-transform hover:scale-105  hover:text-black hover:bg-orange-200">
+      }} className="bg-sky-800 border p-4 font-semibold grid grid-cols-2 md:grid-cols-5 gap-2 text-white cursor-pointer transform transition-transform hover:scale-105  hover:text-black hover:bg-orange-200">
         
         <div className=''>
           
