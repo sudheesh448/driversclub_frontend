@@ -211,9 +211,7 @@ const navigateToCar = () => {
                 LOG OUT
               </label>
             </li>
-            </ul>)}
-
-            {!userId && (
+            </ul>):(
             <ul>
             <li className="mt-2 ml-2 flex items-center cursor-pointer">
               <a href="/user/signin">
@@ -240,7 +238,7 @@ const navigateToCar = () => {
               </a>
             </li>
           </ul>
-            )}
+            )
         </div>
         {/* Drop-down menu ends */}
       </section>
