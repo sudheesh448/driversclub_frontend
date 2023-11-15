@@ -128,7 +128,7 @@ function RequestHistory() {
           </div>
         </div>
 
-        <div className='flex md:hidden'>
+        <div className='flex md:hidden mt-12'>
         <div className='h-28 w-full mb-2 bg-slate-100'>
             <Icons/>
             </div>
