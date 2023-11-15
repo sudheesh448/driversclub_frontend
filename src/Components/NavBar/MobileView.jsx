@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AxiosInstance from './../CustomAxios/axiosInstance';
 import { logout } from './../Redux/authSlice';
 import { selectUserData } from './../Redux/authSlice';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import CarLeftToRight from '../User/HOME/Components/CarAnimations/CarLeftToRight';
