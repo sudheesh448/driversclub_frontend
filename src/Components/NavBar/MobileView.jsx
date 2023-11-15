@@ -197,6 +197,9 @@ const navigateToCar = () => {
                 CARS
               </label>
             </li>
+
+
+
             <li onClick={handleLogout} className="mt-4 ml-2 mb-5 flex items-center cursor-pointer">
               <FontAwesomeIcon
                 icon={faRightFromBracket}
@@ -206,6 +209,31 @@ const navigateToCar = () => {
               <label htmlFor="" className="font-semibold">
                 LOG OUT
               </label>
+            </li>
+
+            <li className="mt-2 ml-2 flex items-center cursor-pointer">
+              <a href="/user/signin">
+            <FontAwesomeIcon icon=" cursor-pointer fa-solid fa-arrow-right-to-bracket" size="xl" />
+              <label className=" cursor-pointer font-semibold mx-3" htmlFor="">
+                 User Sign in
+              </label>
+              </a>
+            </li>
+            <li className="mt-4 ml-2 flex items-center cursor-pointer">
+            <a href="/driver/signin">
+            <FontAwesomeIcon icon="fa-solid cursor-pointer fa-arrow-right-to-bracket" size="xl" />
+              <label className=" cursor-pointer font-semibold mx-3" htmlFor="">
+              Driver Sign in
+              </label>
+              </a>
+            </li>
+            <li className="mt-4 ml-2 flex items-center mb-4">
+            <a href="/admin/signin">
+            <FontAwesomeIcon icon="fa-solid fa-arrow-right-to-bracket" size="xl" />
+              <label className="font-semibold mx-3 " htmlFor="">
+                Admin Sign in
+              </label>
+              </a>
             </li>
           </ul>
         </div>
