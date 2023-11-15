@@ -149,7 +149,7 @@ function RequestPool() {
 
       <div className='w-full shadow-2xl '>
 
-        <div className=" mt-2 mr-4 flex w-full bg-slate-600">
+        <div className=" mt-4 mr-4 flex w-full bg-slate-600">
         <div className='flex'>
         <img className="justify-center mt-0 py-0 w-9" src={bookmark} alt="" />
         <p className="text-2xl font-semibold mb-4 text-white">Pending Trip Requests</p>
