@@ -134,7 +134,7 @@ function RequestHistory() {
             </div>
             <div className='w-full shadow-2xl '>
   
-  <div className=" mt-2 mr-4 flex w-full bg-slate-600">
+  <div className=" mt-2  flex w-full bg-slate-600">
   <div className='flex'>
   
   <p className="text-2xl font-semibold mb-4 text-white">Trip History</p>
