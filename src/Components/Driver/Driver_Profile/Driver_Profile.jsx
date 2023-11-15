@@ -59,6 +59,11 @@ function Driver_Profile() {
       <div className='w-full h-full mt-12 '>
 
       <Profile_Left_sidedetails/>
+      <Bio/>
+      <CalendarSchedule/>
+      <Wallet_profile/>
+      <UpComing/>
+      <AwaitingPayments/>
 
       </div>
 
