@@ -147,7 +147,7 @@ function RequestPool() {
           <Icons/>
       </div>
 
-      <div className='w-full shadow-2xl p-4'>
+      <div className='w-full shadow-2xl '>
 
         <div className=" mt-2 mr-4 flex w-full bg-slate-600">
         <div className='flex'>
@@ -163,7 +163,7 @@ function RequestPool() {
       }} className="bg-sky-800 border p-4 font-semibold grid grid-cols-5 gap-2 text-white cursor-pointer transform transition-transform hover:scale-105  hover:text-black hover:bg-orange-200">
         
         <div className='flex'>
-          <img  className='w-8' src={postBox} alt="" />
+          
         <p className='ml-2'>{trip.first_name}</p>
         </div>
         <div className='grid grid-cols-5'>
@@ -171,7 +171,7 @@ function RequestPool() {
             <p> {trip.from_location}</p>
             </div>
             <div className='justify-center flex w-52'>
-            <img className='w-8' src={fromto} alt="" />
+           
             </div>
         </div>
         <div>
