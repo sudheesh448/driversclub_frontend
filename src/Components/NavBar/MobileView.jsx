@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import AxiosInstance from './../CustomAxios/axiosInstance';
+import { logout } from './../Redux/authSlice';
+import { selectUserData } from './../Redux/authSlice';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import CarLeftToRight from '../User/HOME/Components/CarAnimations/CarLeftToRight';
+import { Chat, Notifications } from '@mui/icons-material';
 import {
   faXmark,
   faBars,
@@ -27,6 +35,13 @@ library.add(
   faCar
 );
 
+const navigate = useNavigate();
+const dispatch = useDispatch();
+const userData = useSelector(selectUserData);
+const isDriver = userData.is_driver;
+const is_super = userData.is_super;
+const userId = userData.userId;
+
 function MobileViewNavbar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
@@ -51,10 +66,12 @@ function MobileViewNavbar() {
         >
           <ul className="flex flex-col items-start">
             <li className="mt-4 ml-2 flex items-center">
+            <a href={isDriver ? '/driver/home' : (is_super ? '/admin/home' : '/')}>
               <FontAwesomeIcon icon={faHouse} size="xl" className="mr-4" />
               <label className="font-semibold" htmlFor="">
                 HOME
               </label>
+              </a>
             </li>
             <li className="mt-4 ml-2 flex items-center">
               <FontAwesomeIcon icon={faUser} size="xl" className="mr-4" />
