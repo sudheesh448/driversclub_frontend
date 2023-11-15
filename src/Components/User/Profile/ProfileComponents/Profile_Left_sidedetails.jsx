@@ -101,7 +101,7 @@ function Profile_Left_sidedetails() {
     <>
         <div className='md:w-1/5 pt-12 md:pt-0  md:h-screen items-center justify-center md:flex w-full  md:flex-col  bg-gradient-to-r from-stone-700 to-stone-400'>
         {/* Profile Image */}
-        <div className='w-56 mx-2 items-center justify-center flex rounded-full overflow-hidden'>
+        <div className='w-full mx-2 items-center justify-center flex rounded-full overflow-hidden'>
           
 
 
