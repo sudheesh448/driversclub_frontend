@@ -146,7 +146,7 @@ function RequestPool() {
       <div className='h-28 w-full mb-2 bg-slate-100'>
           <Icons/>
       </div>
-      <div className='w-full shadow-2xl p-4'>
+      <div className='w-full shadow-2xl '>
 
 <div className=" mt-2 flex w-full bg-slate-600">
 <div className='flex'>
