@@ -144,7 +144,8 @@ const navigateToCar = () => {
         <div
           className={`absolute ${isNavOpen ? 'block' : 'hidden'} rounded-sm w-2/5 opacity-90 h-auto bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-indigo-200 via-sky-200 to-gray-100 flex flex-col items-start pt-4 top-16 right-4`}
         >
-          <ul className="flex flex-col items-start">
+          {userId && (
+          <ul className="flex flex-col items-start"> 
             <li className=" mt-4 ml-2 flex items-center cursor-pointer">
             <a href={isDriver ? '/driver/home' : (is_super ? '/admin/home' : '/')}>
               <FontAwesomeIcon icon={faHouse} size="xl" className="mr-4" />
@@ -210,7 +211,8 @@ const navigateToCar = () => {
                 LOG OUT
               </label>
             </li>
-
+            </ul>)}
+            <ul>
             <li className="mt-2 ml-2 flex items-center cursor-pointer">
               <a href="/user/signin">
             <FontAwesomeIcon icon=" cursor-pointer fa-solid fa-arrow-right-to-bracket" size="xl" />
