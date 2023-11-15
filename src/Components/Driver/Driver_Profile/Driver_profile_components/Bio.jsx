@@ -60,7 +60,7 @@ function Bio() {
             modalIsOpen ? '' : 'hidden'
           }`}
         >
-          <div className="bg-white p-8 w-1/2 rounded-lg shadow-lg">
+          <div className="bg-white p-8 w-full md:w-1/2 rounded-lg shadow-lg">
             {editMode ? (
               <div>
                 <h2 className="text-2xl font-semibold mb-4">Edit Bio</h2>
