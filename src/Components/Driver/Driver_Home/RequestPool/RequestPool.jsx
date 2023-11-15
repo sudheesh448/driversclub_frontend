@@ -162,7 +162,7 @@ function RequestPool() {
         navigate(`/trip_request_detail/${trip.id}`);
       }} className="bg-sky-800 border p-4 font-semibold grid grid-cols-5 gap-2 text-white cursor-pointer transform transition-transform hover:scale-105  hover:text-black hover:bg-orange-200">
         
-        <div className='flex'>
+        <div className=''>
           
         <p className='ml-2'>{trip.first_name}</p>
         </div>
