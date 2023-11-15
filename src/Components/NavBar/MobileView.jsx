@@ -125,6 +125,30 @@ const navigateToCar = () => {
   };
 
 
+  const navigateToProfileDriver = () => {
+    if (!isProfilePage) {
+      Navigate('/driver/profile');
+    }
+  };
+  const navigateToRequestpool = () =>{
+    if (!isPRequestpoolPage) {
+      Navigate('/driver/requestpool');
+    }
+  }
+  
+  const navigateToConfirmedDriver = () => {
+    if (!isConfirmedRequestPage) {
+      Navigate('/driver/confirmedrequests');
+    }
+  }
+  
+  const navigateToHistoryDriver = () => {
+    if (!isHistoryPage) {
+      Navigate('/driver/trip_history');
+    }
+  }
+
+
   return (
     <>
       <section className="md:hidden">
@@ -220,13 +244,13 @@ const navigateToCar = () => {
               </ul>
             ) : isDriver ? (
               <ul className="flex flex-col items-start">
-                <li onClick={navigateToProfile} className="mt-4 ml-2 flex items-center cursor-pointer">
+                <li onClick={navigateToProfileDriver} className="mt-4 ml-2 flex items-center cursor-pointer">
               <FontAwesomeIcon icon={faUser} size="xl" className="mr-4" />
               <label htmlFor="" className="font-semibold cursor-pointer">
                 PROFILE
               </label>
             </li>
-            <li onClick={navigateToConfirmed} className="mt-4 ml-2 flex items-center cursor-pointer">
+            <li onClick={navigateToConfirmedDriver} className="mt-4 ml-2 flex items-center cursor-pointer">
               <FontAwesomeIcon
                 icon={faCircleCheck}
                 size="xl"
@@ -236,13 +260,13 @@ const navigateToCar = () => {
                 CONFIRMED
               </label>
             </li>
-            <li onClick={navigateToPending} className="mt-4 ml-2 flex items-center cursor-pointer">
+            <li onClick={navigateToRequestpool} className="mt-4 ml-2 flex items-center cursor-pointer">
               <FontAwesomeIcon icon={faClock} size="xl" className="mr-4" />
               <label htmlFor="" className="font-semibold cursor-pointer">
                 REQUEST POOL
               </label>
             </li>
-            <li onClick={navigateToHistory} className="mt-4 ml-2 flex items-center cursor-pointer">
+            <li onClick={navigateToHistoryDriver} className="mt-4 ml-2 flex items-center cursor-pointer">
               <FontAwesomeIcon
                 icon={faFolderOpen}
                 size="xl"
