@@ -35,16 +35,16 @@ library.add(
   faCar
 );
 
-const navigate = useNavigate();
-const dispatch = useDispatch();
-const userData = useSelector(selectUserData);
-const isDriver = userData.is_driver;
-const is_super = userData.is_super;
-const userId = userData.userId;
+
 
 function MobileViewNavbar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
-
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const userData = useSelector(selectUserData);
+  const isDriver = userData.is_driver;
+  const is_super = userData.is_super;
+  const userId = userData.userId;
   return (
     <>
       <section className="md:hidden">
