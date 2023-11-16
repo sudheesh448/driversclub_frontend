@@ -189,14 +189,7 @@ function DashboardGraphs() {
     <Pie data={pieData} options={pieOptions} />
     </div>
     </div>
-    <div className='md:flex h-60 md:mt-2 mt-6'>
-    <div className="chart-container w-full md:mt-0 mt-4 h- ml-2 md:w-1/2" style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}>
-    <Bar data={barChartData} options={barChartOptions} />
-    </div>
-    <div className="chart-container w-full md:mt-0 mt-4 ml-2 md:w-1/2" style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}>
-    <Bar data={barChartDataTrip} options={barChartOptionsTrip} />
-    </div>
-    </div>
+    
     </div>
   )
 }

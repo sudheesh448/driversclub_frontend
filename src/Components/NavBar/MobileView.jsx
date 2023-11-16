@@ -154,6 +154,24 @@ const navigateToCar = () => {
   }
 
 
+
+  const NavigateToAdminHome = () =>{
+    Navigate('/admin/home')
+      }
+      const NavigateToAdminDriver = () =>{
+        Navigate('/admin/driverlist')
+          }
+    const NavigateToAdminUsers = () =>{
+      Navigate('/admin/userlist')
+        }
+    const NavigateToAdminBank = () =>{
+      Navigate('/admin/Banking')
+        }
+    const NavigateToAdminRequests = () =>{
+      Navigate('/admin/Requests')
+        }
+
+
   return (
     <>
       <section className="md:hidden">
@@ -189,48 +207,36 @@ const navigateToCar = () => {
             {userId ? (
             is_super ? (
               <ul className="flex flex-col items-start">
-                <li onClick={navigateToProfile} className="mt-4 ml-2 flex items-center cursor-pointer">
+                <li onClick={NavigateToAdminDriver} className="mt-4 ml-2 flex items-center cursor-pointer">
               <FontAwesomeIcon icon={faUser} size="xl" className="mr-4" />
               <label htmlFor="" className="font-semibold cursor-pointer">
-                PROFILE
+                DRIVERS
               </label>
             </li>
-            <li onClick={navigateToConfirmed} className="mt-4 ml-2 flex items-center cursor-pointer">
+            <li onClick={NavigateToAdminUsers} className="mt-4 ml-2 flex items-center cursor-pointer">
               <FontAwesomeIcon
                 icon={faCircleCheck}
                 size="xl"
                 className="mr-4"
               />
               <label htmlFor="" className="font-semibold cursor-pointer">
-                CONFIRMED
+                USERS
               </label>
             </li>
-            <li onClick={navigateToPending} className="mt-4 ml-2 flex items-center cursor-pointer">
+            <li onClick={NavigateToAdminBank} className="mt-4 ml-2 flex items-center cursor-pointer">
               <FontAwesomeIcon icon={faClock} size="xl" className="mr-4" />
               <label htmlFor="" className="font-semibold cursor-pointer">
-                PENDING
+                BANKING
               </label>
             </li>
-            <li onClick={navigateToHistory} className="mt-4 ml-2 flex items-center cursor-pointer">
+            <li onClick={NavigateToAdminRequests} className="mt-4 ml-2 flex items-center cursor-pointer">
               <FontAwesomeIcon
                 icon={faFolderOpen}
                 size="xl"
                 className="mr-4"
               />
               <label htmlFor="" className="font-semibold cursor-pointer">
-                HISTORY
-              </label>
-            </li>
-            <li onClick={navigateToChat} className="mt-2 ml-2 flex items-center cursor-pointer">
-              <FontAwesomeIcon icon={faStar} size="xl" className="mr-4" />
-              <label htmlFor="" className="font-semibold cursor-pointer">
-                CHATS
-              </label>
-            </li>
-            <li onClick={navigateToCar} className="mt-4 ml-2 flex items-center cursor-pointer">
-              <FontAwesomeIcon icon={faCar} size="xl" className="mr-4" />
-              <label htmlFor="" className="font-semibold cursor-pointer">
-                CARS
+                REQUESTS
               </label>
             </li>
 
