@@ -181,7 +181,7 @@ function Banking() {
         <AdminAnimation />
         <h3 className='font-bold text-3xl text-white'>BANKING</h3>
       </div>
-      <div className='w-full flex'>
+      <div className='w-full hidden md:flex'>
         <div className='px-1 py-2 bg-stone-200'>
           <AdminIcons />
         </div>
@@ -276,7 +276,6 @@ function Banking() {
 
       <div className='md:hidden'>
       <div className='w-full h-24 overflow-hidden mt-12 bg-sky-900 flex text-center items-center'>
-        <AdminAnimation />
         <h3 className='font-bold text-3xl text-white'>BANKING</h3>
       </div>
       <div className="w-full">
