@@ -140,7 +140,7 @@ function ConfirmedRequest() {
           </div>
         </div>
       </div>
-<div></div>
+
       <div className='md:hidden mt-12'>
       <div className='h-28 w-full mb-2 bg-slate-100'>
             <Icons/>
