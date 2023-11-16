@@ -176,6 +176,7 @@ function Banking() {
   return (
     <div>
       <Navbar />
+      <div className='hiddden md:block'>
       <div className='w-full h-24 overflow-hidden mt-12 bg-sky-900 flex text-center items-center'>
         <AdminAnimation />
         <h3 className='font-bold text-3xl text-white'>BANKING</h3>
@@ -270,6 +271,94 @@ function Banking() {
         
           </div>
         
+      </div>
+      </div>
+
+      <div className='md:hidden'>
+      <div className='w-full h-24 overflow-hidden mt-12 bg-sky-900 flex text-center items-center'>
+        <AdminAnimation />
+        <h3 className='font-bold text-3xl text-white'>BANKING</h3>
+      </div>
+      <div className="w-full">
+          <div>
+          <div className="shadow-xl">
+  {bankTransferDetails.length > 0 ? (
+    bankTransferDetails.map((trip) => (
+      <div key={trip.id}  onClick={() => openModal(trip)}  className="bg-sky-800 border p-4   grid md:grid-cols-6 gap-2 text-white cursor-pointer transform transition-transform  hover:text-black hover:bg-orange-200">
+        
+        <div className='md:grid grid-cols-6'>
+        <p> {trip.id}</p>
+        </div>
+        <div className='md:grid grid-cols-6'>
+            <div>
+            <p className='ml-2 font-medium'>{trip.user_details.first_name}</p>
+        <p className='ml-2'>{trip.user_details.email}</p>
+        <p className='ml-2'>{trip.user_details.phone}</p>
+            </div>
+            <div className='justify-center flex '>
+            
+            </div>
+        </div>
+        <div>
+        <p className='ml-2 font-medium'>{trip.user_details.first_name}</p>
+        <p className='ml-2'>Bank: {trip.bank_name}</p>
+        <p className='ml-2'>Branch:  {trip.bank_branch}</p>
+        
+        
+        </div>
+        <div>
+        <p>Account: {trip.account_number}</p>
+        <p className='ml-2'>Ifsc: {trip.ifsc}</p>
+        <p> {trip.amount}</p>
+        
+        
+        </div>
+        <div>
+        <p> Posted On: {new Date(trip.created_at).toLocaleDateString()}</p>
+        <p> {trip.status}</p>
+        </div>
+        <div>
+        <p> Bank Ref ID: {trip.bank_reference_id}</p>
+         {trip.payment_on ? (
+            <p> Payment Date: {new Date(trip.payment_on).toLocaleDateString()}</p>
+          ) : (
+            <p> Payment Date: Not entered</p>
+          )}
+        </div>
+        
+        {/* Add other trip details you want to display */}
+        
+      </div>
+    ))
+  ) : (
+    <div className="grid grid-cols-5">
+      <div></div><div></div>
+    <p >No pending trip requests found.</p>
+    </div>
+  )}
+</div>
+          </div>
+          <div className='pagination mt-2 flex justify-center '>
+          <button
+            onClick={() => changePage(currentPage - 1)}
+            disabled={currentPage === 1}
+            className={`bg-blue-500 cursor-pointer text-white p-2 rounded ${currentPage === 1 ? 'opacity-50 ' : ''}`}
+          >
+            Prev 
+          </button>
+          <span className="bg-sky-800 text-white font-bold p-2 rounded-full mx-4"> {currentPage}</span>
+          <button
+            onClick={() => changePage(currentPage + 1)}
+            disabled={bankTransferDetails.length < perPage || responseStatus === 404}
+            className={`bg-blue-500 cursor-pointer text-white p-2 rounded ${
+              bankTransferDetails.length < perPage || responseStatus === 404 ? 'opacity-50 ' : ''
+            }`}
+          >
+            Next
+          </button>
+          </div>
+        </div>
+
       </div>
       
       <Footer />
