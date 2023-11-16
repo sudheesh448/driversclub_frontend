@@ -68,6 +68,9 @@ const user_id=0
   return (
     <div>
         <Navbar/>
+        <div className='hidden md:block'>
+
+        
         <div className='bg-sky-900 mt-12 flex items-center'>
             <div className='w-1/12 '>
             <AdminAnimation/>
@@ -108,7 +111,7 @@ const user_id=0
         historyData.map((historyData) => (
             <div key={historyData.id}  onClick={() => {
               navigate(`/trip_request_detail/${historyData.id}`);
-            }} className="bg-sky-800 border p-4 font-semibold grid grid-cols-10 gap-2 text-white cursor-pointer   hover:text-sky-950 font-semibold  hover:bg-orange-200"
+            }} className="bg-sky-800 border p-4  grid grid-cols-10 gap-2 text-white cursor-pointer   hover:text-sky-950 font-semibold  hover:bg-orange-200"
             >
 
                 <div className="col-span-8 sm:col-span-2 md:col-span-1">
@@ -190,6 +193,10 @@ const user_id=0
         </div>
 
             </div>
+        </div>
+        </div>
+        <div>
+          
         </div>
         <Footer/>
     </div>

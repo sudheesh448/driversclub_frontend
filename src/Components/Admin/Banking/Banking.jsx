@@ -275,9 +275,6 @@ function Banking() {
       </div>
 
       <div className='md:hidden'>
-      <div className='w-full h-24 overflow-hidden mt-12 bg-sky-900 flex text-center items-center'>
-        <h3 className='font-bold text-3xl text-white'>BANKING</h3>
-      </div>
       <div className="w-full">
           <div>
           <div className="shadow-xl">
@@ -332,7 +329,7 @@ function Banking() {
   ) : (
     <div className="grid grid-cols-5">
       <div></div><div></div>
-    <p >No pending trip requests found.</p>
+    <p >No  requests found.</p>
     </div>
   )}
 </div>
@@ -367,7 +364,7 @@ function Banking() {
   isOpen={isModalOpen}
   onRequestClose={closeModal}
   contentLabel="Bank Transfer Modal"
-  className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 shadow-lg rounded w-1/2"
+  className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 shadow-lg rounded w-full md:w-1/2"
 >
   <h2 className="text-xl font-bold mb-4">Bank Transfer</h2>
   <div className="mb-2">
