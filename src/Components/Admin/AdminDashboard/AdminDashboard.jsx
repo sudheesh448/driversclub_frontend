@@ -37,6 +37,21 @@ const axiosInstance=AxiosInstance()
         </div>
     </div>
     </div>
+
+<div className='md:hidden mt-12'>
+<div className='w-full h-24 overflow-hidden  bg-sky-900 flex text-center  items-center'>
+    <AdminAnimation/>
+      <h3 className='font-bold text-2xl text-white '>ADMIN PANEL</h3>
+    </div>
+    <div className=''>
+        <RevenueConsolidated />
+      </div>
+      <div>
+        <DashboardGraphs/>
+      </div>
+
+</div>
+
     <Footer/>
     </>
   )
