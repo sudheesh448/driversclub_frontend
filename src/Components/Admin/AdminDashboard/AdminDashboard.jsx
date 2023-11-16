@@ -5,14 +5,16 @@ import AdminIcons from './DashboardComponents/Animation/AdminIcons'
 import AxiosInstance from '../../CustomAxios/axiosInstance'
 import RevenueConsolidated from './DashboardComponents/Animation/RevenueConsolidated'
 import DashboardGraphs from './DashboardComponents/DashboardGraphs'
+import Footer from '../../Footer/Footer'
 function AdminDashboard() {
 const axiosInstance=AxiosInstance()
 
   return (
     <>
+
     <Navbar/>
+    <div className='hidden md:block'>
     <div>
-      
     </div>
     <div className='w-full h-24 overflow-hidden mt-12 bg-sky-900 flex text-center  items-center'>
     <AdminAnimation/>
@@ -34,6 +36,8 @@ const axiosInstance=AxiosInstance()
             </div>
         </div>
     </div>
+    </div>
+    <Footer/>
     </>
   )
 }

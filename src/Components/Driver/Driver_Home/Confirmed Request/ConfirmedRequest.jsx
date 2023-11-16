@@ -78,7 +78,7 @@ function ConfirmedRequest() {
     confirmedRequests.map((trip) => (
       <div key={trip.id}  onClick={() => {
         navigate(`/trip_request_detail/${trip.trip_id}`);
-      }} className="bg-sky-800 border p-4 font-semibold grid grid-cols-2 md:grid-cols-5 gap-2 text-white cursor-pointer transform transition-transform hover:scale-105  hover:text-black hover:bg-orange-200">
+      }} className="bg-sky-800 border p-4 font-semibold grid grid-cols-2 md:grid-cols-5 gap-2 text-white cursor-pointer transform transition-transform   hover:text-black hover:bg-orange-200">
         
         <div className='flex'>
           <img  className='w-8' src={postBox} alt="" />
