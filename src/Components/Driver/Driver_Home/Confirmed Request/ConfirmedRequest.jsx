@@ -78,13 +78,13 @@ function ConfirmedRequest() {
     confirmedRequests.map((trip) => (
       <div key={trip.id}  onClick={() => {
         navigate(`/trip_request_detail/${trip.trip_id}`);
-      }} className="bg-sky-800 border p-4 font-semibold grid grid-cols-5 gap-2 text-white cursor-pointer transform transition-transform hover:scale-105  hover:text-black hover:bg-orange-200">
+      }} className="bg-sky-800 border p-4 font-semibold grid grid-cols-2 md:grid-cols-5 gap-2 text-white cursor-pointer transform transition-transform hover:scale-105  hover:text-black hover:bg-orange-200">
         
         <div className='flex'>
           <img  className='w-8' src={postBox} alt="" />
         <p className='ml-2'>{trip.user_first_name}</p>
         </div>
-        <div className='grid grid-cols-5'>
+        <div className='grid '>
             <div>
             <p> {trip.from_location}</p>
             </div>
@@ -109,7 +109,7 @@ function ConfirmedRequest() {
       </div>
     ))
   ) : (
-    <p className="col-span-5">No pending trip requests found.</p>
+    <p className="col-span-5">No  trip requests found.</p>
   )}
 </div>
           <div className='pagination mt-2 flex justify-center '>

@@ -176,7 +176,7 @@ confirmedRequests.map((trip) => (
 </div>
 ))
 ) : (
-<p className="col-span-5">No pending trip requests found.</p>
+<p className="col-span-5">No  trip requests found.</p>
 )}
 </div>
     <div className='pagination mt-2 flex justify-center '>
