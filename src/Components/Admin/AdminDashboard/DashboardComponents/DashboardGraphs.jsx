@@ -181,19 +181,19 @@ function DashboardGraphs() {
 
   return (
     <div>
-    <div className='flex mt-2 h-60'>
-    <div className="chart-container mr-2 md:w-1/2" style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}>
+    <div className='md:flex mt-2 h-60'>
+    <div className="chart-container mr-2 w-full md:w-1/2" style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}>
       <Doughnut data={Doughnutdata} options={Doughnutoptions} />
     </div>
-    <div className="chart-container ml-2 md:w-1/2" style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}>
+    <div className="chart-container ml-2 w-full md:w-1/2" style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}>
     <Pie data={pieData} options={pieOptions} />
     </div>
     </div>
-    <div className='flex mt-2 h-60'>
-    <div className="chart-container h- ml-2 md:w-1/2" style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}>
+    <div className='md:flex mt-2 h-60'>
+    <div className="chart-container w-full h- ml-2 md:w-1/2" style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}>
     <Bar data={barChartData} options={barChartOptions} />
     </div>
-    <div className="chart-container h- ml-2 md:w-1/2" style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}>
+    <div className="chart-container w-full h- ml-2 md:w-1/2" style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}>
     <Bar data={barChartDataTrip} options={barChartOptionsTrip} />
     </div>
     </div>
