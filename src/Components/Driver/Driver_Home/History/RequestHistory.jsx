@@ -140,44 +140,44 @@ function RequestHistory() {
           <p className="text-2xl font-semibold mb-4 text-white">Trip History</p>
           </div>
 </div>
-    <div className="shadow-xl">
-{confirmedRequests.length > 0 ? (
-confirmedRequests.map((trip) => (
-<div key={trip.id}  onClick={() => {
-  navigate(`/trip_request_detail/${trip.trip_id}`);
-}} className="bg-sky-800 border p-4 font-semibold grid-cols-2 grid md:grid-cols-5 gap-2 text-white cursor-pointer transform transition-transform hover:scale-105  hover:text-black hover:bg-orange-200">
-  
-  <div className='flex'>
-    
-  <p className='ml-2'>{trip.user_first_name}</p>
-  </div>
-  <div className='grid '>
-      <div>
-      <p> {trip.from_location}</p>
+<div className="shadow-xl">
+  {confirmedRequests.length > 0 ? (
+    confirmedRequests.map((trip) => (
+      <div key={trip.id}  onClick={() => {
+        navigate(`/trip_request_detail/${trip.trip_id}`);
+      }} className="bg-sky-800 border p-4 font-semibold grid grid-cols-2 md:grid-cols-5 gap-2 text-white cursor-pointer transform transition-transform hover:scale-105  hover:text-black hover:bg-orange-200">
+        
+        <div className='flex'>
+          <img  className='w-8' src={postBox} alt="" />
+        <p className='ml-2'>{trip.user_first_name}</p>
+        </div>
+        <div className='grid '>
+            <div>
+            <p> {trip.from_location}</p>
+            </div>
+            <div className='justify-center flex w-52'>
+            <img className='w-8' src={fromto} alt="" />
+            </div>
+        </div>
+        <div>
+        <p>
+           {trip.to_location}</p>
+        </div>
+        <div>
+        <p> Date: {trip.journey_start_date}</p>
+        </div>
+        <div>
+         <p> Return: {trip.is_return ? "No return" : trip.return_date}</p>
+        
+        </div>
+        
+        {/* Add other trip details you want to display */}
+        
       </div>
-      <div className='justify-center flex w-52'>
-      <img className='w-8' src={fromto} alt="" />
-      </div>
-  </div>
-  <div>
-  <p>
-     {trip.to_location}</p>
-  </div>
-  <div>
-  <p> Date: {trip.journey_start_date}</p>
-  </div>
-  <div>
-   <p> Return: {trip.is_return ? "No return" : trip.return_date}</p>
-  
-  </div>
-  
-  {/* Add other trip details you want to display */}
-  
-</div>
-))
-) : (
-<p className="col-span-5">No  trip requests found.</p>
-)}
+    ))
+  ) : (
+    <p className="col-span-5">No  trip requests found.</p>
+  )}
 </div>
     <div className='pagination mt-2 flex justify-center '>
     <button
